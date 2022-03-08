@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:39:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/08 14:08:49 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/08 22:27:32 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
 size_t	ft_strlen(const char *str);
-void	ft_memset(void *mem, int value, size_t len);
-int		ft_bzero(void *mem, size_t len);
-int		ft_memcpy(void *dest, void *source, size_t len);
-int		ft_memmove(void *dest, void *source, size_t len);
-int		ft_strlcpy(char *dest, char *source, size_t dest_size);
-int		ft_strlcat(char *dest, char *source, size_t dest_size);
+void	*ft_memset(void *mem, int value, size_t len);
+void	ft_bzero(void *mem, size_t len);
+void	*ft_memcpy(void *dest, void *source, size_t len);
+void	*ft_memmove(void *dest, void *source, size_t len);
+size_t	ft_strlcpy(char *dest, char *source, size_t dest_size);
+size_t	ft_strlcat(char *dest, char *source, size_t dest_size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(int str, char to_find);

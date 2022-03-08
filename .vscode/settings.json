@@ -5,5 +5,10 @@
     "**/*.bc": true,
     "**/*.i": true,
     "**/*.s": true,
+  },
+  "files.associations": {
+    "stddef.h": "c",
+    "stdint.h": "c",
+    "ft.h": "c"
   }
 }

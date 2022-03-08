@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/08 20:18:37 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/08 20:34:35 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int	ft_isalpha(int c)
+size_t	ft_strlen(const char *str)
 {
-	return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
+	const char	*tmp;
+	size_t		result;
+
+	result = 0;
+	tmp = str - 1;
+	while (*++tmp)
+		result++;
+	return (result);
 }
