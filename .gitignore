@@ -1,7 +1,9 @@
-**/*.o
-**/*.d
-**/*.bc
-**/*.i
-**/*.s
-**/*.log
-libft.a
+src/*.o
+src/*.d
+src/*.bc
+src/*.i
+src/*.s
+src/libft.a
+test
+build
+.vscode/*.log
