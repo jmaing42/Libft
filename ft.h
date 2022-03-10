@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jmaing <jmaing@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:39:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/08 22:27:32 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/10 22:54:07 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ size_t	ft_strlcpy(char *dest, char *source, size_t dest_size);
 size_t	ft_strlcat(char *dest, char *source, size_t dest_size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-char	*ft_strchr(int str, char to_find);
-char	*ft_strrchr(int str, char to_find);
-int		ft_strncmp(char *a, char *b, size_t len);
-int		ft_memchr(const void *str, int to_find, size_t len);
+char	*ft_strchr(const char *str, int to_find);
+char	*ft_strrchr(const char *str, int to_find);
+int		ft_strncmp(const char *a, const char *b, size_t len);
+void	*ft_memchr(const void *str, int to_find, size_t len);
 int		ft_memcmp(const void *a, const void *b, size_t len);
-int		ft_strnstr(char *str, char *to_find);
+char	*ft_strnstr(const char *str, const char *to_find, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t item_size);
 char	*strdup(const char *str);
