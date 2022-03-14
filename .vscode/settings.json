@@ -1,14 +1,14 @@
 {
   "files.exclude": {
+    ".vscode": true,
     "**/*.o": true,
     "**/*.d": true,
     "**/*.bc": true,
     "**/*.i": true,
     "**/*.s": true,
+    "**/*.a": true,
   },
   "files.associations": {
-    "stddef.h": "c",
-    "stdint.h": "c",
     "ft.h": "c"
   }
 }

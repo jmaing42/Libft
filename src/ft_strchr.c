@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/09 15:43:47 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/14 13:56:29 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,24 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	char	to_find;
+	const char	*result;
+	char		to_find;
 
-	to_find = c;
+	result = NULL;
+	to_find = (char) c;
 	if (!to_find)
-		return ((char *)str + ft_strlen(str));
-	str--;
-	while (*++str)
-		if (*str == to_find)
-			return ((char *) str);
-	return (NULL);
+		result = &str[ft_strlen(str)];
+	else
+	{
+		str--;
+		while (*++str)
+		{
+			if (*str == to_find)
+			{
+				result = str;
+				break ;
+			}
+		}
+	}
+	return (*((char **)((void *) &result)));
 }

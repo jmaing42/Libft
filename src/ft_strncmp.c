@@ -6,14 +6,19 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/09 16:03:10 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/14 14:11:27 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int	ft_strncmp(const char *a, const char *b, size_t len)
+int	ft_strncmp(const char *s1, const char *s2, size_t len)
 {
+	const unsigned char	*a;
+	const unsigned char	*b;
+
+	a = (const unsigned char *) s1;
+	b = (const unsigned char *) s2;
 	len++;
 	while (--len && *a && *b)
 	{
@@ -24,5 +29,5 @@ int	ft_strncmp(const char *a, const char *b, size_t len)
 	}
 	if (!len)
 		return (0);
-	return ((int) *((unsigned char *) a) - *((unsigned char *) b));
+	return ((int) *a - *b);
 }
