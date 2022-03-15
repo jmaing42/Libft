@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/15 06:58:23 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/15 09:11:00 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,11 @@ void	*ft_memmove(void *dest, void *source, size_t len)
 
 void	*ft_calloc(size_t count, size_t item_size)
 {
-	return (malloc(count * item_size));
+	const size_t	len = count * item_size;
+	void *const		result = malloc(len);
+
+	if (!result)
+		return (NULL);
+	ft_bzero(result, len);
+	return (result);
 }

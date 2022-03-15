@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:39:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/15 07:12:35 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/15 08:53:11 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		ft_atoi(const char *str);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strjoin(char const *prefix, char const *suffix);
 char	*ft_strtrim(char const *str, char const *ignore_set);
+//  part2_split.c
 char	**ft_split(char const *str, char c);
 //  part2_print.c
 void	ft_putchar_fd(char c, int fd);

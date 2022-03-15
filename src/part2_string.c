@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/15 08:07:52 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/15 08:36:00 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,3 @@ char	*ft_strtrim(char const *str, char const *ignore_set)
 	result[len - ignore] = '\0';
 	return (result);
 }
-
-char	**ft_split(char const *str, char c);
-// TODO: implement ft_split
