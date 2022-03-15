@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:39:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/14 13:35:41 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/15 05:20:57 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,37 @@
 
 # include <stddef.h>
 
+// Part 1 - Libc functions
+//  part1_char.c
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
-size_t	ft_strlen(const char *str);
-void	*ft_memset(void *mem, int value, size_t len);
+//  part1_memory.c
 void	ft_bzero(void *mem, size_t len);
+void	*ft_memset(void *mem, int value, size_t len);
 void	*ft_memcpy(void *dest, void *source, size_t len);
 void	*ft_memmove(void *dest, void *source, size_t len);
-size_t	ft_strlcpy(char *dest, char *source, size_t dest_size);
-size_t	ft_strlcat(char *dest, char *source, size_t dest_size);
-int		ft_toupper(int c);
-int		ft_tolower(int c);
+void	*ft_calloc(size_t count, size_t item_size);
+//  part1_find.c
+int		ft_memcmp(const void *a, const void *b, size_t len);
+void	*ft_memchr(const void *str, int to_find, size_t len);
 char	*ft_strchr(const char *str, int to_find);
 char	*ft_strrchr(const char *str, int to_find);
+//  part1_string.c
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dest, char *source, size_t dest_size);
+size_t	ft_strlcat(char *dest, char *source, size_t dest_size);
 int		ft_strncmp(const char *a, const char *b, size_t len);
-void	*ft_memchr(const void *str, int to_find, size_t len);
-int		ft_memcmp(const void *a, const void *b, size_t len);
 char	*ft_strnstr(const char *str, const char *to_find, size_t len);
-int		ft_atoi(const char *str);
-void	*ft_calloc(size_t count, size_t item_size);
+//  part1_etc.c
 char	*ft_strdup(const char *str);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+int		ft_atoi(const char *str);
 
+// Part 2 = Additional functions
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strjoin(char const *prefix, char const *suffix);
 char	*ft_strtrim(char const *str, char const *ignore_set);
