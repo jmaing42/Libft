@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/15 08:36:00 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/15 13:03:00 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ char	*ft_strjoin(char const *prefix, char const *suffix)
 static size_t	str_count_consecutive_set(
 	const char *from,
 	const char *set,
-	bool inverse,
 	int direction)
 {
 	size_t		result;
@@ -66,7 +65,7 @@ static size_t	str_count_consecutive_set(
 		while (*++tmp)
 			if (*tmp == from[(intptr_t) result * direction])
 				found = true;
-		if (found == inverse)
+		if (!found)
 			break ;
 		result++;
 	}
@@ -79,11 +78,11 @@ char	*ft_strtrim(char const *str, char const *ignore_set)
 	size_t	ignore;
 	char	*result;
 
-	str = &str[str_count_consecutive_set(str, ignore_set, false, 1)];
+	str = &str[str_count_consecutive_set(str, ignore_set, 1)];
 	len = ft_strlen(str);
 	if (!len)
 		return (ft_strdup(""));
-	ignore = str_count_consecutive_set(&str[len - 1], ignore_set, false, -1);
+	ignore = str_count_consecutive_set(&str[len - 1], ignore_set, -1);
 	result = malloc(len - ignore + 1);
 	if (!result)
 		return (NULL);
