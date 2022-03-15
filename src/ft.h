@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:39:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/15 05:20:57 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/15 07:12:35 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,20 @@ int		ft_tolower(int c);
 int		ft_atoi(const char *str);
 
 // Part 2 = Additional functions
+//  part2_string.c
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strjoin(char const *prefix, char const *suffix);
 char	*ft_strtrim(char const *str, char const *ignore_set);
 char	**ft_split(char const *str, char c);
-char	*ft_itoa(int n);
-char	*ft_strmapi(char const *str, char (*f)(unsigned int index, char c));
-void	ft_striteri(char *str, void (*f)(unsigned int index, char *inout_c));
+//  part2_print.c
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *str, int fd);
 void	ft_putendl_fd(char *str, int fd);
 void	ft_putnbr_fd(int n, int fd);
+//  part2_etc.c
+char	*ft_itoa(int n);
+void	ft_striteri(char *str, void (*f)(unsigned int index, char *inout_c));
+char	*ft_strmapi(char const *str, char (*f)(unsigned int index, char c));
 
 typedef struct s_list
 {
