@@ -18,9 +18,6 @@ clean:
 fclean: clean
 	rm -f $(TARGET)
 re: fclean all
-test:
-	norminette
-	make -C ../test
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@ -MD

@@ -40,7 +40,7 @@ int	main(void)
 		}
 		if (!test)
 			printf("Undefined kind: %s\n", g_buffer_kind);
-		err |= !test || test->test(g_buffer_kind);
+		err |= !test || !!test->test(g_buffer_kind);
 	}
 	return (err);
 }

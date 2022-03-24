@@ -7,6 +7,7 @@
     "**/*.i": true,
     "**/*.s": true,
     "**/*.a": true,
+    "**/*.exe": true,
   },
   "files.associations": {
     "ft.h": "c",
