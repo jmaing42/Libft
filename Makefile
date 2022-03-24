@@ -1,8 +1,9 @@
 test:
 	norminette
 	make -C src
-	make -C test/case1 test
+	make -C test test
+	echo "OK!"
 fclean:
 	make -C src fclean
-	make -C test/case1 fclean
+	make -C test fclean
 .PHONY: test fclean
