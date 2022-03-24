@@ -1,10 +1,10 @@
-AR := ar
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror
-CFLAGS += $(if $(filter 1,$(TEST)), -Weverything -Wno-poison-system-directories -save-temps=obj,)
+CCLD := gcc
+CFLAGS := -Wall -Wextra -Werror -I../../src
+LDFLAGS :=
 SRC_DIR := .
 OBJ_DIR := .
-TARGET := libft.a
+TARGET := main.exe
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 DEPS := $(OBJS:.o=.d)
@@ -18,14 +18,13 @@ clean:
 fclean: clean
 	rm -f $(TARGET)
 re: fclean all
-test:
-	norminette
-	make -C ../test
+test: all
+	./$(TARGET) < data/ft_isalpha.csv
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@ -MD
 
 $(TARGET): $(OBJS)
-	$(AR) cr $@ $^
+	$(CCLD) $(LDFLAGS) $^ ../../src/libft.a -o $@ -MD
 
 -include $(DEPS)

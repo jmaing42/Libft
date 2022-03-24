@@ -11,5 +11,11 @@
   "files.associations": {
     "ft.h": "c",
     "stddef.h": "c"
-  }
+  },
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/src"
+  ],
+  "c-cpp-flylint.includePaths": [
+    "${workspaceFolder}/src"
+  ],
 }

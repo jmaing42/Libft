@@ -1,9 +1,8 @@
-src/*.o
-src/*.d
-src/*.bc
-src/*.i
-src/*.s
-src/libft.a
-test
-build
+*.o
+*.d
+*.bc
+*.i
+*.s
+*.a
+*.exe
 .vscode/*.log

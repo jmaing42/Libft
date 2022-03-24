@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   part2_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jmaing <jmaing@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/15 09:23:06 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/21 21:14:37 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	ft_split_internal_alloc(const char *str, char c, char ***out)
 			break ;
 		str = ft_string_find(str, c, true);
 	}
-	result = calloc(length + 1, sizeof(char *));
+	result = ft_calloc(length + 1, sizeof(char *));
 	if (!result)
 		return (1);
 	result[length] = NULL;
