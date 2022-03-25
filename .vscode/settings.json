@@ -1,17 +1,10 @@
 {
   "files.exclude": {
     ".vscode": true,
-    "**/*.o": true,
-    "**/*.d": true,
-    "**/*.bc": true,
-    "**/*.i": true,
-    "**/*.s": true,
-    "**/*.a": true,
-    "**/*.exe": true,
+    "**/*.{o,d,bc,i,s,exe,a,lib,so,dll,dylib}": true,
   },
   "files.associations": {
-    "ft.h": "c",
-    "stddef.h": "c"
+    "*.h": "c"
   },
   "C_Cpp.default.includePath": [
     "${workspaceFolder}/src"
