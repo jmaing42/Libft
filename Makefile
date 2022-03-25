@@ -10,7 +10,10 @@ fclean:
 	$(Q)make -C src fclean
 	$(Q)make -C test fclean
 publish:
+ifndef GIT_REMOTE_URL
+	$(error GIT_REMOTE_URL is undefined)
 	$(Q)rm -rf ./tmp
+endif
 	$(Q)cp -r ./src ./tmp
 	$(Q)make -C tmp fclean
 	$(Q)cd tmp && git init && git push $(GIT_REMOTE_URL) master
