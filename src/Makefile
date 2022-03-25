@@ -20,7 +20,7 @@ fclean: clean
 re: fclean all
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@ -MD
+	$(CC) $(CFLAGS) -c $< -o $@ -MMD
 
 $(TARGET): $(OBJS)
 	$(AR) cr $@ $^
