@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/26 05:32:38 by jmaing            #+#    #+#             */
+/*   Updated: 2022/03/26 08:37:39 by jmaing           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <string.h>
 
@@ -10,17 +22,17 @@ typedef struct s_tuple__static_string__func_i_ {
 	int			(*test)(const char *kind);
 }	t_tuple__static_string__func_i_;
 
-char							g_buffer_kind[1024];
-t_tuple__static_string__func_i_	g_tests[] = {
-	{"ft_isalpha_c", test_ft_isalpha_c},
-	{"ft_isalpha_i", test_ft_isalpha_i},
+static char										g_buffer_kind[1024];
+static const t_tuple__static_string__func_i_	g_tests[] = {
+{"ft_isalpha_c", test_ft_isalpha_c},
+{"ft_isalpha_i", test_ft_isalpha_i},
 };
 
 int	main(void)
 {
-	size_t							i;
-	int								err;
-	t_tuple__static_string__func_i_	*test;
+	size_t									i;
+	int										err;
+	const t_tuple__static_string__func_i_	*test;
 
 	err = 0;
 	while (1)
@@ -40,7 +52,7 @@ int	main(void)
 		}
 		if (!test)
 			printf("Undefined kind: %s\n", g_buffer_kind);
-		err |= !test || !!test->test(g_buffer_kind);
+		err |= (!test || !!test->test(g_buffer_kind));
 	}
 	return (err);
 }
