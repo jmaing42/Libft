@@ -3,6 +3,7 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 all: test
 clean:
 	$(Q)rm -rf ./tmp
+	@sh -c 'printf "\033[0m"'
 fclean: clean
 	$(Q)make -C src fclean
 	$(Q)make -C test fclean
