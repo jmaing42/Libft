@@ -1,10 +1,10 @@
-Q = $(if $(filter 1,$(V) $(VERBOSE)),,@)
+Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 test:
-	$(Q)norminette
+	$(Q)cd src && norminette
 	$(Q)make -C src
 	$(Q)make -C test test
-	echo "OK!"
+	@echo "OK!"
 fclean:
 	$(Q)rm -rf ./tmp
 	$(Q)make -C src fclean
