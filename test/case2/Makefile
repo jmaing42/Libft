@@ -11,6 +11,7 @@ deinit:
 	rm -rf tmp
 	rm -rf libft_unit_test
 refresh:
+	rm -rf libft
 	cp -r ../../src libft
 test: init refresh
 ifeq ($(OS),Windows_NT)
