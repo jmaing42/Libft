@@ -6,7 +6,9 @@ clean:
 fclean: clean
 	$(Q)make -C src fclean
 	$(Q)make -C test fclean
-re: fclean all
+re:
+	$(Q)make -C src fclean
+	$(Q)make test
 init:
 	$(Q)make -C test init
 deinit:
