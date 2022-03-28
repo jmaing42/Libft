@@ -1,7 +1,7 @@
 all: test
-clean: init
-	rm -rf tmp
-fclean: init clean
+clean:
+	rm -rf tmp libft
+fclean: clean
 re: fclean all
 init: | Libftest
 deinit: fclean

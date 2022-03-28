@@ -1,9 +1,9 @@
 all: test
 clean: init
-	rm -rf tmp
+	rm -rf tmp libft
 	make -C libft_unit_test clean
 fclean: init
-	rm -rf tmp
+	rm -rf tmp libft
 	make -C libft_unit_test fclean
 re: fclean all
 init: | libft_unit_test

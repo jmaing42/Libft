@@ -1,9 +1,8 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 TESTS := $(wildcard case*)
-RULES := clean fclean re test
+RULES := all clean fclean re init deinit refresh test
 
-all: test
-.PHONY: all $(RULES)
+.PHONY: $(RULES)
 define build_common_rule
 $1:
 	$(Q)$(foreach t,$(TESTS),make -C $t $1 && )echo "OK!"
