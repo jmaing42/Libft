@@ -13,9 +13,9 @@ fclean:
 test: | builddir
 	$(Q)make -C builddir/default test
 	$(Q)make -C builddir/normal test
-	$(Q)[[ ! -f ../../libft_asan.a ]] || make -C builddir/asan
-	$(Q)[[ ! -f ../../libft_msan.a ]] || make -C builddir/msan
-	$(Q)[[ ! -f ../../libft_ubsan.a ]] || make -C builddir/ubsan
+	$(Q)[ ! -f ../../libft_asan.a ] || make -C builddir/asan
+	$(Q)[ ! -f ../../libft_msan.a ] || make -C builddir/msan
+	$(Q)[ ! -f ../../libft_ubsan.a ] || make -C builddir/ubsan
 .PHONY: all clean fclean test
 
 builddir:

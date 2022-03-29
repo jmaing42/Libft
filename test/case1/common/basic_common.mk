@@ -2,8 +2,8 @@
 
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
-CC := gcc
-CCLD := gcc
+CC := clang
+CCLD := clang
 AR := ar
 CFLAGS := -Wall -Wextra -Werror $(ADDITIONAL_CC_LD_FLAGS)
 LDFLAGS := $(ADDITIONAL_CC_LD_FLAGS)

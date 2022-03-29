@@ -14,7 +14,7 @@ int	main(void)
 	i = start;
 	while (i <= end)
 	{
-		err |= (ft_isascii(i) != isascii(i));
+		err |= (!ft_isascii(i) != !isascii(i));
 		i++;
 	}
 	return (err);
