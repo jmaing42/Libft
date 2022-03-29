@@ -1,2 +1,5 @@
 libft
 tester
+tmp
+tmp_*
+libft_*.a
