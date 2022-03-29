@@ -63,6 +63,6 @@ test: refresh
 	$(Q)make -C libft re
 	$(Q)find libft | cmp tmp_all.txt
 	$(Q)find libft/libft.a -size 1 | cmp result_empty.txt
-	@printf "2. \033[91mRelink(?) must be checked manually!!\033[0m\n"
+	@printf "2. \033[93mRelink(?) must be checked manually!!\033[0m\n"
 	@echo "All Makefile test passed!"
 .PHONY: all clean fclean re init deinit refresh test
