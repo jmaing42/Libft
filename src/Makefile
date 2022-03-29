@@ -1,7 +1,7 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 AR := ar
-CC := gcc
+CC := clang
 CFLAGS := -Wall -Wextra -Werror
 CFLAGS += $(if $(filter 1,$(TEST)), -Weverything -Wno-poison-system-directories -save-temps=obj,)
 SRC_DIR := .

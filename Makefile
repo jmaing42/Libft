@@ -7,6 +7,7 @@ clean:
 fclean: clean
 	$(Q)make -C src fclean
 	$(Q)make -C test fclean
+	@printf "\033[0m"
 re:
 	$(Q)make -C src fclean
 	$(Q)make test
