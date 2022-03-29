@@ -26,7 +26,7 @@ libft_normal.a:
 	$(Q)make libft_ubsan.a || printf "\033[93m(optional) ubsan build failed - ubsan test will be skipped\033[0m\n"
 	$(Q)rm -rf tmp
 	$(Q)mkdir tmp
-	$(Q)ls -1 libft | grep -E "\\.c\$$" | xargs -L1 -I {} gcc -c -Wall -Wextra -Werror -o tmp/{}.o libft/{}
+	$(Q)ls -1 libft | grep -E "\\.c\$$" | xargs -L1 -I {} gcc -c -Wall -Wextra -Werror -g3 -o tmp/{}.o libft/{}
 	$(Q)ar cr libft_normal.a libft/*.o
 	$(Q)rm -rf tmp
 libft_asan.a:

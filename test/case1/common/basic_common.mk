@@ -1,11 +1,13 @@
+# requires ADDITIONAL_CC_LD_FLAGS, LIBFT_PATH
+
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 CC := gcc
 CCLD := gcc
 AR := ar
-CFLAGS := -Wall -Wextra -Werror -g3 -fsanitize=memory
-LDFLAGS := -g3 -fsanitize=memory
-SRC_DIR := ..
+CFLAGS := -Wall -Wextra -Werror $(ADDITIONAL_CC_LD_FLAGS)
+LDFLAGS := $(ADDITIONAL_CC_LD_FLAGS)
+SRC_DIR := ../..
 OBJ_DIR := .
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
@@ -24,6 +26,6 @@ test: tester
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(Q)$(CC) $(CFLAGS) -c $< -o $@ -MMD
 tester: tester.a
-	$(Q)$(CCLD) -o tester $(LDFLAGS) tester.a ../../../libft/libft.a
+	$(Q)$(CCLD) -o tester $(LDFLAGS) tester.a $(LIBFT_PATH)
 tester.a: $(OBJS)
 	$(Q)$(AR) cr $@ $^

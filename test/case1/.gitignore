@@ -3,3 +3,4 @@ tester
 tmp
 tmp_*
 libft_*.a
+builddir

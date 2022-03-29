@@ -5,8 +5,8 @@
 
 int	main(void)
 {
-	const int	start = 0;
-	const int	end = UCHAR_MAX;
+	const int	start = -UCHAR_MAX;
+	const int	end = UCHAR_MAX * 2;
 	int			err;
 	int			i;
 
@@ -17,6 +17,5 @@ int	main(void)
 		err |= (ft_isalnum(i) != isalnum(i));
 		i++;
 	}
-
 	return (err);
 }
