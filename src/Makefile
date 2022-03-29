@@ -1,3 +1,5 @@
+Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
+
 AR := ar
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
@@ -14,15 +16,15 @@ TEMPS += *.bc *.i *.s
 all: $(TARGET)
 .PHONY: all clean fclean re
 clean:
-	rm -f $(TEMPS)
+	$(Q)rm -f $(TEMPS)
 fclean: clean
-	rm -f $(TARGET)
+	$(Q)rm -f $(TARGET)
 re: fclean all
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@ -MMD
+	$(Q)$(CC) $(CFLAGS) -c $< -o $@ -MMD
 
 $(TARGET): $(OBJS)
-	$(AR) cr $@ $^
+	$(Q)$(AR) cr $@ $^
 
 -include $(DEPS)

@@ -3,7 +3,7 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 all: test
 clean:
 	$(Q)rm -rf ./tmp
-	@sh -c 'printf "\033[0m"'
+	@printf "\033[0m"
 fclean: clean
 	$(Q)make -C src fclean
 	$(Q)make -C test fclean
@@ -21,7 +21,7 @@ test:
 	$(Q)make -C src
 	$(Q)make -C test test
 	@echo "Some test might need manual review"
-publish: clean
+publish: fclean
 ifndef GIT_REMOTE_URL
 	$(error GIT_REMOTE_URL is undefined)
 endif
