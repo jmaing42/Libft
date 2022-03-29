@@ -1,7 +1,7 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 all: test
-clean: builddir
+clean: | builddir
 	$(Q)rm -rf tmp
 	$(Q)make -C builddir/default clean
 	$(Q)make -C builddir/normal clean
@@ -10,7 +10,7 @@ clean: builddir
 	$(Q)make -C builddir/ubsan clean
 fclean:
 	$(Q)rm -rf tmp builddir
-test: builddir
+test: | builddir
 	$(Q)make -C builddir/default test
 	$(Q)make -C builddir/normal test
 	$(Q)[[ ! -f ../../libft_asan.a ]] || make -C builddir/asan

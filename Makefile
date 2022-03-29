@@ -21,7 +21,7 @@ test:
 	$(Q)make -C src
 	$(Q)make -C test test
 	@echo "Some test might need manual review"
-publish: fclean
+publish: test fclean
 ifndef GIT_REMOTE_URL
 	$(error GIT_REMOTE_URL is undefined)
 endif

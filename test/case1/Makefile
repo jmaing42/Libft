@@ -17,7 +17,7 @@ test: refresh
 	$(Q)make -C libft re
 	$(Q)make -C part1 test
 	$(Q)make -C part2 test
-	$(Q)make -C part3 test || true
+	$(Q)make -C part3 test || printf "\033[93m(optional) Bonus failed\033[0m\n"
 .PHONY: all clean fclean re init deinit refresh test
 
 libft_normal.a:
