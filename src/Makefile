@@ -11,20 +11,23 @@ fclean: clean
 re: fclean all
 .PHONY: all clean fclean re
 
-$(NAME): builddir/basic.a
+$(NAME): builddir/basic_tested.a
 	cp $< $(NAME)
-bonus: builddir/bonus.a
+bonus: builddir/bonus_tested.a
 	cp $< $(NAME)
 .PHONY: $(NAME) bonus
 
-builddir/basic.a: | builddir
-	make -C builddir basic.a
-builddir/bonus.a: | builddir
-	make -C builddir bonus.a
+builddir/basic_tested.a: | builddir
+	make -C builddir basic_tested.a
+builddir/bonus_tested.a: | builddir
+	make -C builddir bonus_tested.a
 builddir:
+	make try_make_builddir || (make clean && false)
+try_make_builddir:
 	rm -rf tmp
-	mkdir -p tmp
-	gcc -Wall -Wextra -Werror -o tmp/make_builddir ft_make_builddir.c
-	tmp/make_builddir > tmp/Makefile
+	mkdir -p tmp/tmp
+	gcc -Wall -Wextra -Werror -o tmp/makegen ft_make_builddir.c
+	tmp/makegen > tmp/Makefile
+	rm -f tmp/makegen
 	mv tmp builddir
-	rm -rf tmp
+.PHONY: try_make_builddir
