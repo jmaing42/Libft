@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:39:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 13:56:24 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/30 14:13:50 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int		ft_isprint(int c);
 //  ft_part1_memory.c
 void	ft_bzero(void *mem, size_t len);
 void	*ft_memset(void *mem, int value, size_t len);
-void	*ft_memcpy(void *dest, void *source, size_t len);
-void	*ft_memmove(void *dest, void *source, size_t len);
+void	*ft_memcpy(void *dest, const void *source, size_t len);
+void	*ft_memmove(void *dest, const void *source, size_t len);
 void	*ft_calloc(size_t count, size_t item_size);
 //  ft_part1_find.c
 int		ft_memcmp(const void *a, const void *b, size_t len);
