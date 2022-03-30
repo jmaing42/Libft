@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   part2_string.c                                     :+:      :+:    :+:   */
+/*   ft_part2_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/15 13:03:00 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/30 14:03:54 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "ft.h"
+#include "libft.h"
 
 char	*ft_substr(char const *str, unsigned int start, size_t len)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   part2_split.c                                      :+:      :+:    :+:   */
+/*   ft_part2_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/21 21:14:37 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/30 14:04:06 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "ft.h"
+#include "libft.h"
+
+// TODO:
 
 static void	ft_array_free(char **arr)
 {

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   part2_etc.c                                        :+:      :+:    :+:   */
+/*   ft_part2_etc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/15 07:31:09 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/30 14:03:23 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "ft.h"
+#include "libft.h"
 
 static void	itoa_internal(int n, int sgn, char *dest)
 {
