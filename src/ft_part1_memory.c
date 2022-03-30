@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 14:02:57 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/30 14:21:38 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*ft_memset(void *mem, int value, size_t len)
 	return (mem);
 }
 
-void	*ft_memcpy(void *dest, void *source, size_t len)
+void	*ft_memcpy(void *dest, const void *source, size_t len)
 {
 	char	*src;
 	char	*dst;
@@ -43,7 +43,7 @@ void	*ft_memcpy(void *dest, void *source, size_t len)
 	return (dest);
 }
 
-void	*ft_memmove(void *dest, void *source, size_t len)
+void	*ft_memmove(void *dest, const void *source, size_t len)
 {
 	char	*src;
 	char	*dst;

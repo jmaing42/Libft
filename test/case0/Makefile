@@ -20,8 +20,8 @@ test: refresh
 	$(Q)find libft > tmp_fclean.txt
 	@echo "0. All files must be in the project root directory"
 	$(Q)grep -E "^libft/.*/.*\$$" < tmp_fclean.txt | cmp result_empty.txt
-	@echo "1. Only {Makefile,*.{c,h,mk}} is allowed"
-	$(Q)grep -vE "^libft/.*\\.(c|h|mk)\$$" < tmp_fclean.txt | cmp result_makefile.txt
+	@echo "1. Only Makefile, libft.h, ft_*.c is allowed"
+	$(Q)grep -vE "^libft(/(Makefile|libft.h|ft_.*\\.c))?\$$" < tmp_fclean.txt | cmp result_empty.txt
 	@printf "2. \033[93mUnused files must be checked manually!!\033[0m\n"
 # make
 	@echo "Testing make (default), all, libft.a"
