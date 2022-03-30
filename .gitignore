@@ -1,3 +1,4 @@
+# temporary files
 *.o
 *.d
 *.bc
@@ -7,3 +8,9 @@
 *.exe
 .vscode/*.log
 tmp
+
+# libft-specific, directory to submit
+src/*
+!src/Makefile
+!src/libft.h
+!src/ft_*.c

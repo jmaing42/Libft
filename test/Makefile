@@ -1,5 +1,5 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-CASES := $(wildcard case*)
+CASES := $(sort $(wildcard case*))
 RULES := all clean fclean re init deinit refresh test
 
 .PHONY: $(RULES)

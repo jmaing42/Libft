@@ -1,43 +1,30 @@
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
+# Assuming modifying the source files.
+# If source files modified after make, make it again in the builddir or make re
 
 NAME := libft.a
 
-AR := ar
-CC := clang
-CFLAGS := -Wall -Wextra -Werror
-CFLAGS += $(if $(filter 1,$(TEST)), -Weverything -Wno-poison-system-directories -save-temps=obj,)
-SRC_DIR := .
-OBJ_DIR := .
-NAME_BASIC := $(OBJ_DIR)/basic.a
-NAME_BONUS := $(OBJ_DIR)/bonus.a
-SRCS_BONUS := $(wildcard $(SRC_DIR)/*.c)
-SRCS_BASIC := $(filter-out $(wildcard $(SRC_DIR)/*_bonus.c), $(SRCS_BONUS))
-OBJS_BONUS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS_BONUS))
-OBJS_BASIC := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS_BASIC))
-DEPS := $(OBJS_BONUS:.o=.d)
-TEMPS := *.o *.d *.bc *.i *.s
-
 all: $(NAME)
 clean:
-	$(Q)rm -f $(TEMPS)
-	$(Q)rm -f $(NAME_BASIC) $(NAME_BONUS)
+	rm -rf builddir tmp
 fclean: clean
-	$(Q)rm -f $(NAME)
+	rm -f $(NAME)
 re: fclean all
 .PHONY: all clean fclean re
 
-$(NAME): $(NAME_BASIC)
-	$(Q)cp $< $(NAME)
-bonus: $(NAME_BONUS)
-	$(Q)cp $< $(NAME)
+$(NAME): builddir/basic.a
+	cp $< $(NAME)
+bonus: builddir/bonus.a
+	cp $< $(NAME)
 .PHONY: $(NAME) bonus
 
-$(NAME_BASIC): $(OBJS_BASIC)
-	$(Q)$(AR) cr $@ $^
-$(NAME_BONUS): $(OBJS_BONUS)
-	$(Q)$(AR) cr $@ $^
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(Q)$(CC) $(CFLAGS) -c $< -o $@ -MMD
-
--include $(DEPS)
+builddir/basic.a: | builddir
+	make -C builddir basic.a
+builddir/bonus.a: | builddir
+	make -C builddir bonus.a
+builddir:
+	rm -rf tmp
+	mkdir -p tmp
+	gcc -Wall -Wextra -Werror -o tmp/make_builddir ft_make_builddir.c
+	tmp/make_builddir > tmp/Makefile
+	mv tmp builddir
+	rm -rf tmp
