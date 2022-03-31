@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part1_string.c                                  :+:      :+:    :+:   */
+/*   ft_src_part1_string.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 14:03:08 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/31 12:07:57 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ size_t	ft_strlcpy(char *dest, char *source, size_t dest_size)
 	{
 		i = 0;
 		while (*source++)
-		{
 			i++;
-		}
 		return (i);
 	}
 	dest_size--;
@@ -46,9 +44,7 @@ size_t	ft_strlcpy(char *dest, char *source, size_t dest_size)
 	}
 	*dest = '\0';
 	while (*source++)
-	{
 		i++;
-	}
 	return (i);
 }
 

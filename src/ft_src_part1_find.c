@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part1_find.c                                    :+:      :+:    :+:   */
+/*   ft_src_part1_find.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 14:02:36 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/31 11:18:18 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	*ft_memchr(const void *str, int c, size_t len)
 	const char	*mem;
 
 	to_find = (char) c;
-	mem = str;
+	mem = (const char *) str;
 	mem--;
 	while (len--)
 		if (*++mem == to_find)
-			return (*((void **)((void *) &mem)));
+			return ((void *) mem);
 	return (NULL);
 }
 
@@ -65,7 +65,7 @@ char	*ft_strchr(const char *str, int c)
 			}
 		}
 	}
-	return (*((char **)((void *) &result)));
+	return ((char *) result);
 }
 
 char	*ft_strrchr(const char *str, int c)
@@ -84,5 +84,5 @@ char	*ft_strrchr(const char *str, int c)
 			if (*str == to_find)
 				result = str;
 	}
-	return (*((char **)((void *) &result)));
+	return ((char *) result);
 }

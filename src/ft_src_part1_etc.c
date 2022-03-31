@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part1_etc.c                                     :+:      :+:    :+:   */
+/*   ft_src_part1_etc.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 14:02:21 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/31 11:00:34 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 
 char	*ft_strdup(const char *str)
 {
-	void	*result;
+	char	*result;
 	size_t	size;
 
 	size = ft_strlen(str) + 1;
-	result = malloc(size);
+	result = (char *) malloc(size);
 	if (!result)
 		return (NULL);
-	ft_memcpy(result, *((void **)((void *) &str)), size);
+	ft_memcpy(result, str, size);
 	return ((char *) result);
 }
 

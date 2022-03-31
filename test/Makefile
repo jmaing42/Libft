@@ -5,7 +5,7 @@ RULES := all clean fclean re init deinit refresh test
 .PHONY: $(RULES)
 define build_common_rule
 $1:
-	$(Q)$(foreach t,$(CASES),make -C $t $1 && )echo "OK!"
+	$Q$(foreach t,$(CASES),make -C $t $1 && )echo "OK!"
 endef
 $(foreach r, \
 	$(RULES), \

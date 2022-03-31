@@ -16,16 +16,16 @@ TEMPS := *.o *.d
 
 all: test
 clean:
-	$(Q)rm -f $(TEMPS)
+	$Qrm -f $(TEMPS)
 fclean: clean
-	$(Q)rm -f tester
+	$Qrm -f tester
 test: tester
-	$(Q)./tester
+	$Q./tester
 .PHONY: all clean fclean test
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(Q)$(CC) $(CFLAGS) -c $< -o $@ -MMD
+	$Q$(CC) $(CFLAGS) -c $< -o $@ -MMD
 tester: tester.a
-	$(Q)$(CCLD) -o tester $(LDFLAGS) tester.a $(LIBFT_PATH)
+	$Q$(CCLD) -o tester $(LDFLAGS) tester.a $(LIBFT_PATH)
 tester.a: $(OBJS)
-	$(Q)$(AR) cr $@ $^
+	$Q$(AR) cr $@ $^

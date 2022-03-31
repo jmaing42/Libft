@@ -1,33 +1,36 @@
-# Assuming modifying the source files.
-# If source files modified after make, make it again in the builddir or make re
+# Assuming modifying the libft's source files only.
+# If tester's source files were modified, run make in appropriate directory
+
+Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
+MAKE := make --no-print-directory
 
 NAME := libft.a
 
 all: $(NAME)
 clean:
-	rm -rf builddir tmp
+	$Qrm -rf builddir tmp
 fclean: clean
-	rm -f $(NAME)
+	$Qrm -f $(NAME)
 re: fclean all
 .PHONY: all clean fclean re
 
 $(NAME): builddir/basic_tested.a
-	cp $< $(NAME)
+	$Qcp $< $(NAME)
 bonus: builddir/bonus_tested.a
-	cp $< $(NAME)
+	$Qcp $< $(NAME)
 .PHONY: $(NAME) bonus
 
 builddir/basic_tested.a: | builddir
-	make -C builddir basic_tested.a
+	$Q$(MAKE) -C builddir basic_tested.a
 builddir/bonus_tested.a: | builddir
-	make -C builddir bonus_tested.a
+	$Q$(MAKE) -C builddir bonus_tested.a
 builddir:
-	make try_make_builddir || (make clean && false)
+	$Q$(MAKE) try_make_builddir || (make clean && false)
 try_make_builddir:
-	rm -rf tmp
-	mkdir -p tmp/tmp
-	gcc -Wall -Wextra -Werror -o tmp/makegen ft_make_builddir.c
-	tmp/makegen > tmp/Makefile
-	rm -f tmp/makegen
-	mv tmp builddir
-.PHONY: try_make_builddir
+	$Qrm -rf tmp
+	$Qmkdir -p tmp/tmp
+	$Qgcc -Wall -Wextra -Werror -o tmp/makegen ft_make_builddir.c ft_make_common.c
+	$Qtmp/makegen > tmp/Makefile
+	$Qrm -f tmp/makegen
+	$Qmv tmp builddir
+.PHONY: try_make_builddir builddir/basic_tested.a builddir/bonus_tested.a

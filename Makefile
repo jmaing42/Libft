@@ -2,31 +2,31 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 all: test
 clean:
-	$(Q)rm -rf ./tmp
+	$Qrm -rf ./tmp
 	@printf "\033[0m"
 fclean: clean
-	$(Q)make -C src fclean
-	$(Q)make -C test fclean
+	$Qmake -C src fclean
+	$Qmake -C test fclean
 	@printf "\033[0m"
 re:
-	$(Q)make -C src fclean
-	$(Q)make test
+	$Qmake -C src fclean
+	$Qmake test
 init:
-	$(Q)make -C test init
+	$Qmake -C test init
 deinit:
-	$(Q)make -C test deinit
+	$Qmake -C test deinit
 refresh:
-	$(Q)make -C test refresh
+	$Qmake -C test refresh
 test:
-	$(Q)cd src && norminette
-	$(Q)make -C src
-	$(Q)make -C test test
+	$Qcd src && norminette
+	$Qmake -C src
+	$Qmake -C test test
 	@echo "Some test might need manual review"
 publish: test fclean
 ifndef GIT_REMOTE_URL
 	$(error GIT_REMOTE_URL is undefined)
 endif
-	$(Q)cp -r ./src ./tmp
-	$(Q)make -C tmp fclean
-	$(Q)cd tmp && git init && git push $(GIT_REMOTE_URL) master
+	$Qcp -r ./src ./tmp
+	$Qmake -C tmp fclean
+	$Qcd tmp && git init && git push $(GIT_REMOTE_URL) master
 .PHONY: all clean fclean re init deinit refresh test publish

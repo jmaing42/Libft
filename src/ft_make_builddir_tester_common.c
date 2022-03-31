@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 12:54:40 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 13:26:09 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/31 12:25:30 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static const char *const	g_makefile_contents = "" \
 	"all: tester.a\n" \
 	"tester.a: tester.o\n" \
-	"	ar cr tester.a tester.o\n" \
+	"	@ar cr tester.a tester.o\n" \
 	"tester.o: tester.c\n" \
-	"	gcc -o tester.o -Wall -Wextra -Werror -c tester.c\n" \
+	"	@gcc -o tester.o -Wall -Wextra -Werror -c tester.c\n" \
 	"tester.c:\n" \
-	"	echo \"" \
+	"	@echo \"" \
 				"int main() { return 0; }" \
 			"\" > tester.c\n" \
 	"";
