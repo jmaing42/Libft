@@ -5,24 +5,21 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE := make --no-print-directory
 
 NAME := libft.a
-OTHERS := $(filter-out $(wildcard ft_src_*.c), $(wildcard *.c))
+OTHER_USEFUL_FILES := .tmp_others .editorconfig .gitignore
 
 all: $(NAME)
 clean:
-	$Qrm -rf builddir tmp .tmp_others
+	$Qrm -rf builddir tmp $(OTHER_USEFUL_FILES)
 fclean: clean
 	$Qrm -f $(NAME)
 re: fclean all
 .PHONY: all clean fclean re
 
-$(NAME): builddir/basic_tested.a .tmp_others
+$(NAME): builddir/basic_tested.a $(OTHER_USEFUL_FILES)
 	$Qcp $< $(NAME)
-bonus: builddir/bonus_tested.a .tmp_others
+bonus: builddir/bonus_tested.a $(OTHER_USEFUL_FILES)
 	$Qcp $< $(NAME)
 .PHONY: $(NAME) bonus
-.tmp_others: $(OTHERS)
-	$Q[ ! -f $@ ] || printf "\033[93m[WARN] Other files not managed in this directory have been changed.\033[0m\n"
-	$Qecho "This file is for track other files." > .tmp_others
 
 builddir/basic_tested.a: | builddir
 	$Q$(MAKE) -C builddir basic_tested.a
@@ -38,3 +35,11 @@ try_make_builddir:
 	$Qrm -f tmp/makegen
 	$Qmv tmp builddir
 .PHONY: try_make_builddir builddir/basic_tested.a builddir/bonus_tested.a
+
+.tmp_others: $(filter-out $(wildcard ft_src_*.c), $(wildcard *.c))
+	$Q[ ! -f $@ ] || printf "\033[93m[WARN] Other files not managed in this directory have been changed.\033[0m\n"
+	$Qecho "This file is for track other files." > .tmp_others
+.editorconfig:
+	$Qecho "root = true\n[*]\ncharset = utf-8\nend_of_line = lf\nindent_size = 4\nindent_style = tab\ninsert_final_newline = true\ntrim_trailing_whitespace = true\n" > .editorconfig
+.gitignore:
+	$Qecho ".*\ntmp\nbuilddir\n" > .gitignore
