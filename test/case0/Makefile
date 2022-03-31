@@ -12,7 +12,7 @@ refresh: clean
 test: refresh
 # make fclean
 	@echo "Testing make fclean"
-	$Q$Qmake --no-print-directory -C libft fclean
+	@@make --no-print-directory -C libft fclean
 	$Qfind libft > tmp_fclean.txt
 	@echo "0. All files must be in the project root directory"
 	$Qgrep -E "^libft/.*/.*\$$" < tmp_fclean.txt | cmp result_empty.txt
@@ -22,41 +22,41 @@ test: refresh
 # make
 	@echo "Testing make (default), all, libft.a"
 	@echo "0. make must generate libft.a"
-	$Q$Qmake --no-print-directory -C libft all
+	@@make --no-print-directory -C libft all
 	$Qfind libft > tmp_all.txt
 	$Qgrep -E "^libft/libft\\.a\$$" < tmp_all.txt | cmp result_libft.txt
 	@echo "1. make all must be same as make"
-	$Q$Qmake --no-print-directory -C libft fclean
-	$Q$Qmake --no-print-directory -C libft
+	@@make --no-print-directory -C libft fclean
+	@@make --no-print-directory -C libft
 	$Qfind libft | cmp tmp_all.txt
 	@echo "2. make libft.a must be same as make"
-	$Q$Qmake --no-print-directory -C libft fclean
-	$Q$Qmake --no-print-directory -C libft libft.a
+	@@make --no-print-directory -C libft fclean
+	@@make --no-print-directory -C libft libft.a
 	$Qfind libft | cmp tmp_all.txt
 # make clean
 	@echo "Testing make clean"
 	@echo "0. make clean must remove temporary files except for libft.a"
-	$Q$Qmake --no-print-directory -C libft clean
+	@@make --no-print-directory -C libft clean
 	$Qfind libft > tmp_clean.txt
 	$Qgrep -vE "^libft/libft\\.a\$$" < tmp_clean.txt | cmp tmp_fclean.txt
 	@echo "1. make works"
-	$Q$Qmake --no-print-directory -C libft
+	@@make --no-print-directory -C libft
 	$Qfind libft | cmp tmp_all.txt
 	@printf "\033[90m2. Testing with additional files is useless. skip;\033[0m\n"
 # make re
 	@echo "Testing make re"
 	@echo "0. make re works after clean, re, fclean"
-	$Q$Qmake --no-print-directory -C libft re
+	@@make --no-print-directory -C libft re
 	$Qfind libft | cmp tmp_all.txt
-	$Q$Qmake --no-print-directory -C libft re
+	@@make --no-print-directory -C libft re
 	$Qfind libft | cmp tmp_all.txt
-	$Q$Qmake --no-print-directory -C libft fclean
-	$Q$Qmake --no-print-directory -C libft re
+	@@make --no-print-directory -C libft fclean
+	@@make --no-print-directory -C libft re
 	$Qfind libft | cmp tmp_all.txt
 	@echo "1. make re works even if result file is modified"
 	$Qecho "" > libft/libft.a
 	$Qfind libft/libft.a -size 1 | cmp result_libft.txt
-	$Q$Qmake --no-print-directory -C libft re
+	@@make --no-print-directory -C libft re
 	$Qfind libft | cmp tmp_all.txt
 	$Qfind libft/libft.a -size 1 | cmp result_empty.txt
 	@printf "2. \033[93mRelink(?) must be checked manually!!\033[0m\n"
