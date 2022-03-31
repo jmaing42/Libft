@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part2_string.c                                  :+:      :+:    :+:   */
+/*   ft_src_part2_string.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 14:03:54 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/31 13:09:59 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 	str_len = ft_strlen(&str[start]);
 	if (str_len > len)
 		str_len = len;
-	result = malloc(str_len + 1);
+	result = (char *) malloc(str_len + 1);
 	if (!result)
 		return (NULL);
 	result[str_len] = '\0';
-	ft_memcpy(result, &(*((char **)((void *) &str)))[start], str_len);
+	ft_memcpy(result, str + start, str_len);
 	return (result);
 }
 
@@ -37,13 +37,12 @@ char	*ft_strjoin(char const *prefix, char const *suffix)
 {
 	const size_t	prefix_len = ft_strlen(prefix);
 	const size_t	suffix_len = ft_strlen(suffix);
-	char			*result;
+	char *const		result = (char *) malloc(prefix_len + suffix_len + 1);
 
-	result = malloc(prefix_len + suffix_len + 1);
 	if (!result)
 		return (NULL);
-	ft_memcpy(result, *((char **)((void *) &suffix)), prefix_len);
-	ft_memcpy(&result[prefix_len], *((char **)((void *) &suffix)), suffix_len);
+	ft_memcpy(result, suffix, prefix_len);
+	ft_memcpy(&result[prefix_len], suffix, suffix_len);
 	result[prefix_len + suffix_len] = '\0';
 	return (result);
 }
@@ -78,15 +77,15 @@ char	*ft_strtrim(char const *str, char const *ignore_set)
 	size_t	ignore;
 	char	*result;
 
-	str = &str[str_count_consecutive_set(str, ignore_set, 1)];
+	str = str + str_count_consecutive_set(str, ignore_set, 1);
 	len = ft_strlen(str);
 	if (!len)
 		return (ft_strdup(""));
 	ignore = str_count_consecutive_set(&str[len - 1], ignore_set, -1);
-	result = malloc(len - ignore + 1);
+	result = (char *) malloc(len - ignore + 1);
 	if (!result)
 		return (NULL);
-	ft_memcpy(result, *((char **)((void *) &str)), len - ignore);
+	ft_memcpy(result, str, len - ignore);
 	result[len - ignore] = '\0';
 	return (result);
 }

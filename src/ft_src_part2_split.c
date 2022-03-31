@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part2_split.c                                   :+:      :+:    :+:   */
+/*   ft_src_part2_split.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 14:04:06 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/31 13:09:28 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static char	*ft_strndup(const char *src, size_t max_len)
 	char	*result;
 	char	*tmp;
 
-	tmp = *((char **)((void *) &src));
+	tmp = (char *) src;
 	length = 0;
 	while (*tmp++ && length++ < max_len)
 		;
-	result = malloc(length + 1);
+	result = (char *) malloc(length + 1);
 	if (!result)
 		return (NULL);
 	tmp = result;

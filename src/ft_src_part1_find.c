@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/31 11:18:18 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/31 13:07:50 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_strchr(const char *str, int c)
 	result = NULL;
 	to_find = (char) c;
 	if (!to_find)
-		result = &str[ft_strlen(str)];
+		result = str + ft_strlen(str);
 	else
 	{
 		str--;
@@ -75,7 +75,7 @@ char	*ft_strrchr(const char *str, int c)
 
 	to_find = (char) c;
 	if (!to_find)
-		result = &str[ft_strlen(str)];
+		result = str + ft_strlen(str);
 	else
 	{
 		result = NULL;

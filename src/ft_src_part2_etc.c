@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/31 12:08:27 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/03/31 13:08:27 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static void	itoa_internal(int n, int sgn, char *dest)
 {
 	if (n / 10)
-		itoa_internal(n / 10, sgn, &dest[-1]);
+		itoa_internal(n / 10, sgn, dest - 1);
 	dest[-1] = (char)('0' + sgn * (n % 10));
 }
 
@@ -40,7 +40,7 @@ char	*ft_itoa(int n)
 	if (!result)
 		return (NULL);
 	result[len] = '\0';
-	itoa_internal(n, sgn, &result[len]);
+	itoa_internal(n, sgn, result + len);
 	if (sgn < 0)
 		result[0] = '-';
 	return (result);
@@ -55,7 +55,7 @@ void	ft_striteri(char *str, void (*f)(unsigned int index, char *inout_c))
 		index = 0;
 		while (str[index])
 		{
-			f(index, &str[index]);
+			f(index, str + index);
 			index++;
 		}
 	}
