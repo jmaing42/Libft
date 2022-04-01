@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part1_memory.c                                  :+:      :+:    :+:   */
+/*   ft_src_part1_memory.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 14:21:38 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/01 16:30:23 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	*ft_memmove(void *dest, const void *source, size_t len)
 	src = (char *) source + len;
 	dst = (char *) dest + len;
 	while (len--)
-		*dst-- = *src--;
+		*--dst = *--src;
 	return (dest);
 }
 
