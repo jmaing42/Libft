@@ -1,7 +1,6 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 all: test
-	$Qmake --no-print-directory clean
 clean:
 	$Qrm -rf libft tmp_*.txt
 fclean: clean
@@ -75,6 +74,8 @@ test: init refresh
 	$Qnorminette libft/libft.h > libft/libft.h.norm.txt || (echo "Norm error on libft.h" && cat libft/libft.h.norm.txt && exit 1)
 	@echo "2. C files"
 	$Qfind libft -name "*.c" | xargs -L1 sh checker.sh
+	$Qmake --no-print-directory clean
+
 .PHONY: all clean fclean re init deinit refresh test
 
 checker: checker.c

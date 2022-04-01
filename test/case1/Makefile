@@ -1,4 +1,5 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
+MAKE := make --no-print-directory
 CC = clang
 
 all: test
@@ -9,22 +10,22 @@ fclean: clean
 re: fclean all
 init:
 deinit:
-	$Qmake -C part1 fclean
+	$Q$(MAKE) -C part1 fclean
 refresh: fclean
 	$Qrm -rf libft
 	$Qcp -r ../../src libft
-	$Qmake libft_normal.a
+	$Q$(MAKE) libft_normal.a
 test: refresh
-	$Qmake -C libft re
-	$Qmake -C part1 test
-	$Qmake -C part2 test
-	$Qmake -C part3 test || printf "\033[93m(optional) Bonus failed\033[0m\n"
+	$Q$(MAKE) -C libft re
+	$Q$(MAKE) -C part1 test
+	$Q$(MAKE) -C part2 test
+	$Q$(MAKE) -C part3 test || printf "\033[93m(optional) Bonus failed\033[0m\n"
 .PHONY: all clean fclean re init deinit refresh test
 
 libft_normal.a:
-	$Qmake libft_asan.a || printf "\033[93m(optional) asan build failed - asan test will be skipped\033[0m\n"
-	$Qmake libft_msan.a || printf "\033[93m(optional) msan build failed - msan test will be skipped\033[0m\n"
-	$Qmake libft_ubsan.a || printf "\033[93m(optional) ubsan build failed - ubsan test will be skipped\033[0m\n"
+	$Q$(MAKE) libft_asan.a || printf "\033[93m(optional) asan build failed - asan test will be skipped\033[0m\n"
+	$Q$(MAKE) libft_msan.a || printf "\033[93m(optional) msan build failed - msan test will be skipped\033[0m\n"
+	$Q$(MAKE) libft_ubsan.a || printf "\033[93m(optional) ubsan build failed - ubsan test will be skipped\033[0m\n"
 	$Qcommand -v valgrind || printf "\033[93m(optional) valgrind is not available - valgrind test will be skipped\033[0m\n"
 	$Qrm -rf tmp
 	$Qmkdir tmp

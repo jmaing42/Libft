@@ -1,20 +1,23 @@
+Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
+MAKE := make --no-print-directory
+
 all: test
 clean:
-	rm -rf tmp libft
+	$Qrm -rf tmp libft
 fclean: clean
 re: fclean all
 init: | libft_tester
 deinit: fclean
-	rm -rf libft_tester
+	$Qrm -rf libft_tester
 refresh:
-	rm -rf libft
-	cp -r ../../src libft
+	$Qrm -rf libft
+	$Qcp -r ../../src libft
 test: init refresh
-	make -C libft_tester a
+	$(MAKE) -C libft_tester a
 .PHONY: all clean fclean re init deinit refresh test
 
 libft_tester:
-	rm -rf tmp
-	git clone --depth=1 https://github.com/Tripouille/libftTester.git tmp
-	echo "LIBFT_PATH := ../libft" >> tmp/Makefile
-	mv tmp libft_tester
+	$Qrm -rf tmp
+	$Qgit clone --depth=1 https://github.com/Tripouille/libftTester.git tmp
+	@echo "LIBFT_PATH := ../libft" >> tmp/Makefile
+	$Qmv tmp libft_tester
