@@ -1,6 +1,7 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
-all: test clean
+all: test
+	$Qmake --no-print-directory clean
 clean:
 	$Qrm -rf libft tmp_*.txt
 fclean: clean
@@ -66,7 +67,14 @@ test: init refresh
 	@echo "All Makefile test passed!"
 # norm, compile, disallowed chars
 	@echo "Testing norm, compile, disallowed chars"
-	@@find libft -name "*.c" | xargs -L1 sh checker.sh
+	@@make --no-print-directory -C libft fclean
+	@echo "0. Makefile"
+	$Q./checker < libft/Makefile || ("File Makefile has disallowed characters" && exit 1)
+	@echo "1. libft.h"
+	$Q./checker < libft/libft.h || ("File libft.h has disallowed characters" && exit 1)
+	$Qnorminette libft/libft.h > libft/libft.h.norm.txt || (echo "Norm error on libft.h" && cat libft/libft.h.norm.txt && exit 1)
+	@echo "2. C files"
+	$Qfind libft -name "*.c" | xargs -L1 sh checker.sh
 .PHONY: all clean fclean re init deinit refresh test
 
 checker: checker.c
