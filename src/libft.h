@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:39:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/30 14:13:50 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/01 15:26:42 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ char	*ft_itoa(int n);
 void	ft_striteri(char *str, void (*f)(unsigned int index, char *inout_c));
 char	*ft_strmapi(char const *str, char (*f)(unsigned int index, char c));
 
+// [PREPROCESSOR] BONUS PART START
+
 typedef struct s_list
 {
 	void			*content;
@@ -71,14 +73,16 @@ typedef struct s_list
 // Part 3 - Singly Linked List
 //  ft_part3_basic_bonus.c
 t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *node);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *node);
 //  ft_part3_advanced_bonus.c
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// [PREPROCESSOR] BONUS PART END
 
 #endif
