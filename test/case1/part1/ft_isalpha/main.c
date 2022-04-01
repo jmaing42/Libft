@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <ctype.h>
 
-#include "../../ft.h"
+extern int ft_isalpha(int c);
 
 int	main(void)
 {
@@ -11,11 +11,11 @@ int	main(void)
 	int			err;
 	int			i;
 
-	err = (!ft_isascii(EOF) != !isascii(EOF));
+	err = (!ft_isalpha(EOF) != !isalpha(EOF));
 	i = start;
 	while (i <= end)
 	{
-		err |= (!ft_isascii(i) != !isascii(i));
+		err |= (!ft_isalpha(i) != !isalpha(i));
 		i++;
 	}
 	return (err);

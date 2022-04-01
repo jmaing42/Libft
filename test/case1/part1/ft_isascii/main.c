@@ -1,7 +1,8 @@
+#include <stdio.h>
 #include <limits.h>
 #include <ctype.h>
 
-#include "../../ft.h"
+extern int ft_isascii(int c);
 
 int	main(void)
 {
@@ -10,7 +11,7 @@ int	main(void)
 	int			err;
 	int			i;
 
-	err = 0;
+	err = (!ft_isascii(EOF) != !isascii(EOF));
 	i = start;
 	while (i <= end)
 	{

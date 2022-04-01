@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <ctype.h>
 
-#include "../../ft.h"
+extern int ft_isdigit(int c);
 
 int	main(void)
 {
