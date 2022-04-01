@@ -5,11 +5,14 @@ clean:
 	$Qrm -rf libft tmp_*.txt
 fclean: clean
 re: fclean all
-init:
+init: checker
 deinit:
+	$Qrm -f checker
 refresh: clean
+	$Qrm -rf libft
 	$Qcp -r ../../src libft
-test: refresh
+test: init refresh
+	@printf "\033[93mAssuming make fclean make initial state - must be manually checked.\033[0m\n"
 # make fclean
 	@echo "Testing make fclean"
 	@@make --no-print-directory -C libft fclean
@@ -61,4 +64,10 @@ test: refresh
 	$Qfind libft/libft.a -size 1 | cmp result_empty.txt
 	@printf "2. \033[93mRelink(?) must be checked manually!!\033[0m\n"
 	@echo "All Makefile test passed!"
+# norm, compile, disallowed chars
+	@echo "Testing norm, compile, disallowed chars"
+	@@find libft -name "*.c" | xargs -L1 sh checker.sh
 .PHONY: all clean fclean re init deinit refresh test
+
+checker: checker.c
+	gcc -Wall -Wextra -Werror -o $@ $^

@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/31 13:01:38 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/01 19:55:24 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	while (i + needle_len <= max_len)
 	{
 		if (ft_memcmp(str + i, to_find, needle_len) == 0)
-			return ((char *) (str + i));
+			return ((char *)(str + i));
 		i++;
 	}
 	return (NULL);
