@@ -19,7 +19,6 @@ deinit:
 refresh:
 	$Q$(MAKE) -C test refresh
 test:
-	$Q$(MAKE) -C src
 	$Q$(MAKE) -C test test
 	@echo "Some test might need manual review"
 publish: test fclean

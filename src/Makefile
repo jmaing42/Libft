@@ -38,8 +38,8 @@ try_make_builddir:
 
 .tmp_others: $(filter-out $(wildcard ft_src_*.c), $(wildcard *.c))
 	$Q[ ! -f $@ ] || printf "\033[93m[WARN] Other files not managed in this directory have been changed.\033[0m\n"
-	$Qecho "This file is for track other files." > .tmp_others
+	$Q[ ! -f $@ ] && echo "This file is for track other files." > .tmp_others || true
 .editorconfig:
-	$Qecho "root = true\n[*]\ncharset = utf-8\nend_of_line = lf\nindent_size = 4\nindent_style = tab\ninsert_final_newline = true\ntrim_trailing_whitespace = true\n" > .editorconfig
+	$Qprintf "root = true\n\n[*]\ncharset = utf-8\nend_of_line = lf\nindent_size = 4\nindent_style = tab\ninsert_final_newline = true\ntrim_trailing_whitespace = true\n" > .editorconfig
 .gitignore:
-	$Qecho ".*\ntmp\nbuilddir\n" > .gitignore
+	$Qprintf ".*\ntmp\nbuilddir\n" > .gitignore
