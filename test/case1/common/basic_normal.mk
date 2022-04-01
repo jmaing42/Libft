@@ -1,7 +1,7 @@
 ADDITIONAL_CC_LD_FLAGS := -g3
-LIBFT_PATH := ../../../../libft_normal.a
+INTERNAL_LIBFT_PATH := $(BASE_PATH)/libft_normal.a
 
-include ../../../../common/basic_common.mk
+include $(BASE_PATH)/common/basic_common.mk
 
 test: test_with_valgrind
 test_with_valgrind:

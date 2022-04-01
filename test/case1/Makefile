@@ -1,6 +1,5 @@
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := make --no-print-directory
-CC = clang
+BASE_PATH := .
+include $(BASE_PATH)/common/variables.mk
 
 all: test
 clean:
@@ -13,14 +12,16 @@ deinit:
 	$Q$(MAKE) -C part1 fclean
 refresh: fclean
 	$Qrm -rf libft
-	$Qcp -r ../../src libft
+	$Qcp -r $(LIBFT_PATH) libft
 	$Q$(MAKE) libft_normal.a
 test: refresh
 	$Q$(MAKE) -C libft re
 	$Q$(MAKE) -C part1 test
 	$Q$(MAKE) -C part2 test
 	$Q$(MAKE) -C part3 test || printf "\033[93m(optional) Bonus failed\033[0m\n"
-.PHONY: all clean fclean re init deinit refresh test
+help:
+	$Qprintf "standalone usage:\n\tLIBFT_PATH=(path to libft) make -C (path to tester)\n\tmake -C (path to tester) # only if variable is set\nplace your variables.local.mk in (path to tester)/common\n"
+.PHONY: all clean fclean re init deinit refresh test help
 
 libft_normal.a:
 	$Q$(MAKE) libft_asan.a || printf "\033[93m(optional) asan build failed - asan test will be skipped\033[0m\n"

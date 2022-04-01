@@ -4,3 +4,4 @@ tmp
 tmp_*
 libft_*.a
 builddir
+variable.local.mk

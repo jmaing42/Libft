@@ -1,4 +1,4 @@
 ADDITIONAL_CC_LD_FLAGS := -g3 -fsanitize=memory
-LIBFT_PATH := ../../../../libft_msan.a
+INTERNAL_LIBFT_PATH := $(BASE_PATH)/libft_msan.a
 
-include ../../../../common/basic_common.mk
+include $(BASE_PATH)/common/basic_common.mk

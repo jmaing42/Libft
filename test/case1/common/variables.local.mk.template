@@ -1,0 +1,14 @@
+## Copy this file to variables.local.mk if needed
+
+## If you want make always verbose, uncomment next line
+# Q :=
+
+## custom make executable?
+# MAKE := make --no-print-directory
+
+# CC := (C compiler like clang)
+# CXX := (C++ compiler like clang++)
+# AR := (.a archiver like ar)
+
+
+# LIBFT_PATH := (path to libft)

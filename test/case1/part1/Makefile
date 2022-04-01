@@ -1,1 +1,2 @@
-include ../common/part.mk
+BASE_PATH := ..
+include $(BASE_PATH)/common/part.mk

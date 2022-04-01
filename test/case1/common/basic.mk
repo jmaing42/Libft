@@ -1,4 +1,4 @@
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
+include $(BASE_PATH)/common/variables.mk
 
 all: test
 clean: | builddir
@@ -13,17 +13,17 @@ fclean:
 test: | builddir
 	$Qmake -C builddir/default test
 	$Qmake -C builddir/normal test
-	$Q[ ! -f ../../libft_asan.a ] || make -C builddir/asan
-	$Q[ ! -f ../../libft_msan.a ] || make -C builddir/msan
-	$Q[ ! -f ../../libft_ubsan.a ] || make -C builddir/ubsan
+	$Q[ ! -f $(BASE_PATH)/libft_asan.a ] || make -C builddir/asan
+	$Q[ ! -f $(BASE_PATH)/libft_msan.a ] || make -C builddir/msan
+	$Q[ ! -f $(BASE_PATH)/libft_ubsan.a ] || make -C builddir/ubsan
 .PHONY: all clean fclean test
 
 builddir:
 	$Qrm -rf tmp
 	$Qmkdir tmp
-	$Qmkdir tmp/default && echo "include ../../../../common/basic_default.mk" > tmp/default/Makefile
-	$Qmkdir tmp/normal && echo "include ../../../../common/basic_normal.mk" > tmp/normal/Makefile
-	$Qmkdir tmp/asan && echo "include ../../../../common/basic_asan.mk" > tmp/asan/Makefile
-	$Qmkdir tmp/msan && echo "include ../../../../common/basic_msan.mk" > tmp/msan/Makefile
-	$Qmkdir tmp/ubsan && echo "include ../../../../common/basic_ubsan.mk" > tmp/ubsan/Makefile
+	$Qmkdir tmp/default && printf "BASE_PATH := ../../$(BASE_PATH)\ninclude \$$(BASE_PATH)/common/basic_default.mk\n" > tmp/default/Makefile
+	$Qmkdir tmp/normal && printf "BASE_PATH := ../../$(BASE_PATH)\ninclude \$$(BASE_PATH)/common/basic_normal.mk\n" > tmp/normal/Makefile
+	$Qmkdir tmp/asan && printf "BASE_PATH := ../../$(BASE_PATH)\ninclude \$$(BASE_PATH)/common/basic_asan.mk\n" > tmp/asan/Makefile
+	$Qmkdir tmp/msan && printf "BASE_PATH := ../../$(BASE_PATH)\ninclude \$$(BASE_PATH)/common/basic_msan.mk\n" > tmp/msan/Makefile
+	$Qmkdir tmp/ubsan && printf "BASE_PATH := ../../$(BASE_PATH)\ninclude \$$(BASE_PATH)/common/basic_ubsan.mk\n" > tmp/ubsan/Makefile
 	$Qmv tmp builddir

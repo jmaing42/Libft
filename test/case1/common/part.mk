@@ -1,5 +1,4 @@
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := make --no-print-directory
+include $(BASE_PATH)/common/variables.mk
 TESTS := $(wildcard ft_*)
 RULES := all tester clean fclean test
 
