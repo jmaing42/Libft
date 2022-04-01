@@ -1,13 +1,13 @@
 include $(BASE_PATH)/common/variables.mk
 
 all: test
-clean: | builddir
+clean:
 	$Qrm -rf tmp
-	$Q$(MAKE) -C builddir/default clean
-	$Q$(MAKE) -C builddir/normal clean
-	$Q$(MAKE) -C builddir/asan clean
-	$Q$(MAKE) -C builddir/msan clean
-	$Q$(MAKE) -C builddir/ubsan clean
+	$Q[ -d builddir ] && $(MAKE) -C builddir/default clean
+	$Q[ -d builddir ] && $(MAKE) -C builddir/normal clean
+	$Q[ -d builddir ] && $(MAKE) -C builddir/asan clean
+	$Q[ -d builddir ] && $(MAKE) -C builddir/msan clean
+	$Q[ -d builddir ] && $(MAKE) -C builddir/ubsan clean
 fclean:
 	$Qrm -rf tmp builddir
 test: | builddir

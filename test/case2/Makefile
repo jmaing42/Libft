@@ -2,12 +2,12 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE := make --no-print-directory
 
 all: test
-clean: init
+clean:
 	$Qrm -rf tmp libft
-	$Q$(MAKE) -C libft_unit_test clean
-fclean: init
+	$Q[ -d libft_unit_test ] && $(MAKE) -C libft_unit_test clean
+fclean:
 	$Qrm -rf tmp libft
-	$Q$(MAKE) -C libft_unit_test fclean
+	$Q[ -d libft_unit_test ] && $(MAKE) -C libft_unit_test fclean
 re: fclean all
 init: | libft_unit_test
 deinit:
