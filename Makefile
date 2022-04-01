@@ -18,7 +18,6 @@ deinit:
 refresh:
 	$Qmake -C test refresh
 test:
-	$Qcd src && norminette
 	$Qmake -C src
 	$Qmake -C test test
 	@echo "Some test might need manual review"
