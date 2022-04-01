@@ -1,10 +1,7 @@
-# requires ADDITIONAL_CC_LD_FLAGS, LIBFT_PATH
+# requires ADDITIONAL_CC_LD_FLAGS, INTERNAL_LIBFT_PATH
 
-Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
+include $(BASE_PATH)/common/variables.mk
 
-CC := clang
-CCLD := clang
-AR := ar
 CFLAGS := -Wall -Wextra -Werror $(ADDITIONAL_CC_LD_FLAGS)
 LDFLAGS := $(ADDITIONAL_CC_LD_FLAGS)
 SRC_DIR := ../..
@@ -26,6 +23,6 @@ test: tester
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$Q$(CC) $(CFLAGS) -c $< -o $@ -MMD
 tester: tester.a
-	$Q$(CCLD) -o tester $(LDFLAGS) tester.a $(LIBFT_PATH)
+	$Q$(CC) -o tester $(LDFLAGS) tester.a $(INTERNAL_LIBFT_PATH)
 tester.a: $(OBJS)
 	$Q$(AR) cr $@ $^
