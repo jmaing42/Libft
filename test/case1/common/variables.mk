@@ -7,5 +7,5 @@ AR := ar
 LIBFT_PATH ?= ../../src
 
 ifneq ($(BASE_PATH),)
--include $(BASE_PATH)/variable.local.mk
+-include $(BASE_PATH)/variables.local.mk
 endif
