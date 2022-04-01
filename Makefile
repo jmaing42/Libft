@@ -4,6 +4,8 @@ MAKE := make --no-print-directory
 all: test
 clean:
 	$Qrm -rf ./tmp
+	$Q$(MAKE) -C src clean
+	$Q$(MAKE) -C test clean
 	@printf "\033[0m"
 fclean: clean
 	$Q$(MAKE) -C src fclean
