@@ -1,7 +1,7 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 CASES := $(sort $(wildcard case*))
 MAKE := make --no-print-directory
-RULES := all clean fclean re init deinit refresh test
+RULES := all clean fclean re init deinit reinit refresh test
 
 .PHONY: $(RULES)
 define build_common_rule

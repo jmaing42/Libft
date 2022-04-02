@@ -10,6 +10,7 @@ re: fclean all
 init:
 deinit:
 	$Q$(MAKE) -C part1 fclean
+reinit: deinit init
 refresh: fclean
 	$Qrm -rf libft
 	$Qcp -r $(LIBFT_PATH) libft
@@ -21,7 +22,7 @@ test: refresh
 	$Q$(MAKE) -C part3 test || printf "\033[93m(optional) Bonus failed\033[0m\n"
 help:
 	$Qprintf "standalone usage:\n\tLIBFT_PATH=(path to libft) make -C (path to tester)\n\tmake -C (path to tester) # only if variable is set\nplace your variables.local.mk in (path to tester)/common\n"
-.PHONY: all clean fclean re init deinit refresh test help
+.PHONY: all clean fclean re init deinit reinit refresh test help
 
 libft_normal.a:
 	$Q$(MAKE) libft_asan.a || printf "\033[93m(optional) asan build failed - asan test will be skipped\033[0m\n"

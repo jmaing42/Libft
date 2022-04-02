@@ -8,20 +8,21 @@ re: fclean all
 init: | libft_war_machine
 deinit: fclean
 	$Qrm -rf libft_war_machine
+reinit: deinit init
 refresh:
 	$Qrm -rf libft
 	$Qcp -r ../../src libft
 test: init refresh
 ifeq ($(OS),Windows_NT)
-	@echo "Windows detected, no libft_unit_test"
+	@echo "Windows detected, no libft_war_machine"
 else
 ifeq ($(shell uname -s),Darwin)
 	$QPATH_LIBFT="$(abspath libft)" sh libft_war_machine/grademe.sh
 else
-	@echo "Non-mac OS detected, no libft_unit_test"
+	@echo "Non-mac OS detected, no libft_war_machine"
 endif
 endif
-.PHONY: all clean fclean re init deinit refresh test
+.PHONY: all clean fclean re init deinit reinit refresh test
 
 libft_war_machine:
 	$Qrm -rf tmp

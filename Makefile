@@ -18,12 +18,14 @@ init:
 	$Q$(MAKE) -C test init
 deinit:
 	$Q$(MAKE) -C test deinit
+reinit:
+	$Q$(MAKE) -C test reinit
 refresh:
 	$Q$(MAKE) -C test refresh
 test:
 	$Q$(MAKE) -C test test
 	@echo "Some test might need manual review"
-publish: test fclean
+publish_without_test: fclean
 ifndef GIT_REMOTE_URL
 	$(error GIT_REMOTE_URL is undefined)
 endif
@@ -32,4 +34,5 @@ endif
 	$Qprintf "SRCS := %s\n" "$$(cd src && find . -name "*.c" | xargs)" >> tmp/Makefile
 	$Q(cd tmp && git init && git push $(GIT_REMOTE_URL) master) || (echo "Failed to publish" && rm -rf tmp && false)
 	$Qrm -rf tmp
-.PHONY: all clean fclean re init deinit refresh test publish
+publish: test publish_without_test
+.PHONY: all clean fclean re init deinit reinit refresh test publish publish_without_test

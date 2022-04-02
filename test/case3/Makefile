@@ -8,6 +8,7 @@ re: fclean all
 init: | Libftest
 deinit: fclean
 	$Qrm -rf Libftest
+reinit: deinit init
 refresh:
 	$Qrm -rf libft
 	$Qcp -r ../../src libft
@@ -21,7 +22,7 @@ else
 	@echo "Non-mac OS detected, no libft_unit_test"
 endif
 endif
-.PHONY: all clean fclean re init deinit refresh test
+.PHONY: all clean fclean re init deinit reinit refresh test
 
 Libftest:
 	$Qrm -rf tmp
