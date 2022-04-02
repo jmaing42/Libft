@@ -9,9 +9,11 @@ static const int	g_start[3] = {INT_MIN, -10, INT_MAX - 20};
 static const int	g_end[3] = {INT_MIN + 20, 10, INT_MAX};
 
 static const char	*g_formats[] = {
-	"%zd", "\t%zd", "\n%zd", "\v%zd", "\f%zd", "\r%zd", " %zd", "  %zd",
-	"%+zd", "+%+zd", "-%+zd", " %+zd", " +%+zd", " -%+zd",
-	"%+015zd", "+%+015zd", "-%+015zd", " %+015zd", " +%+015zd", " -%+015zd",
+	"%zd", "\t%zd", "\n%zd", "\v%zd", "\f%zd", "\r%zd", " %zd", "  %zd", "%zdx",
+	"%+zd ", "+%+zd", "-%+zd", " %+zd", " +%+zd", " -%+zd ", "x%zd", "x%015zd ",
+	"- %zd", "+ %zd", "%zd 0", "%zd_0", "0x%zd", "%zx", "0%zx", " %zx", " %zx0",
+	"%+015zd", "+%+015zd ", "-%+015zd ", " %+015zd ", " +%+015zd ", " -%+015zd",
+	"x%+015zd", "x %+015zd", "\x80%zd", "%zd\x80", "\xFF%zd", "%zd\xFF", "x%zdx"
 };
 
 int	test(int n)
