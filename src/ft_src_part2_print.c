@@ -6,10 +6,11 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/31 13:08:35 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/02 15:12:51 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include <unistd.h>
 
 #include "libft.h"
@@ -21,16 +22,20 @@ void	ft_putchar_fd(char c, int fd)
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	size_t	len;
+	size_t	remain;
+	size_t	to_write;
 	ssize_t	wrote;
 
-	len = ft_strlen(str);
-	while (len)
+	remain = ft_strlen(str);
+	while (remain)
 	{
-		wrote = write(fd, str, len);
+		to_write = remain;
+		if (to_write > SSIZE_MAX)
+			to_write = SSIZE_MAX;
+		wrote = write(fd, str, to_write);
 		if (wrote < 0)
 			return ;
-		len -= (size_t) wrote;
+		remain -= (size_t) wrote;
 		str = str + wrote;
 	}
 }
