@@ -31,7 +31,7 @@ ifndef GIT_REMOTE_URL
 endif
 	$Qcp -r ./src ./tmp
 	$Q$(MAKE) -C tmp fclean
-	$Qprintf "SRCS := %s\n" "$$(cd src && find . -name "*.c" | xargs)" >> tmp/Makefile
+	$Qprintf "SRCS := %s\n" "$$(cd src && find . -name "*.c" | cut -c 3- | xargs)" >> tmp/Makefile
 	$Q(cd tmp && git init && git push $(GIT_REMOTE_URL) master) || (echo "Failed to publish" && rm -rf tmp && false)
 	$Qrm -rf tmp
 publish: test publish_without_test

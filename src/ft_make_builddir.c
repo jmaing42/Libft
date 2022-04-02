@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:10:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/31 12:24:39 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/02 17:20:39 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	variables(void)
 	v("CFLAGS", "-Wall -Wextra -Werror");
 	v("NAME_BONUS", "bonus.a");
 	v("NAME_BASIC", "basic.a");
-	v("SRCS_BONUS", "$(wildcard $(SRC_DIR)/ft_src_*.c)");
-	v("SRCS_BASIC",
-		"$(filter-out $(wildcard $(SRC_DIR)/*_bonus.c), $(SRCS_BONUS))");
+	v("SRCS_BONUS", "$(addprefix $(SRC_DIR)/,$(filter ft_src_%.c,$(SRCS)))");
+	v("SRCS_BASIC", "$(filter-out $(addprefix $(SRC_DIR)/," \
+							"$(filter ft_src_%.c,$(SRCS))), $(SRCS_BONUS))");
 	v("SRC_PATH_PREFIX", "$(SRC_DIR)/ft_src_");
 	v("OBJS_BONUS", "$(patsubst $(SRC_PATH_PREFIX)%.c,%.o,$(SRCS_BONUS))");
 	v("OBJS_BASIC", "$(patsubst $(SRC_PATH_PREFIX)%.c,%.o,$(SRCS_BASIC))");

@@ -4,6 +4,9 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE := make --no-print-directory
 
+# This variable will be overriden by script-generated file list
+SRCS := $(wildcard *.c)
+
 NAME := libft.a
 HEADER_NAME := ft.h
 OTHER_USEFUL_FILES := .other_file_tracker .editorconfig .gitignore
@@ -37,6 +40,7 @@ try_make_builddir:
 	$Qmkdir -p tmp/tmp
 	$Qgcc -Wall -Wextra -Werror -o tmp/makegen ft_make_builddir.c ft_make_common.c
 	$Qtmp/makegen > tmp/Makefile
+	$Qecho "SRCS := $(SRCS)" >> tmp/Makefile
 	$Qrm -f tmp/makegen
 	$Qmv tmp builddir
 .PHONY: try_make_builddir builddir/basic_tested.a builddir/bonus_tested.a
