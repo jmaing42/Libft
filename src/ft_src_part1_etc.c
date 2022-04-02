@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/31 11:00:34 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/02 19:13:42 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int	ft_atoi(const char *str)
 
 	result = 0;
 	sgn = 1;
+	while (*str == '\t' || *str == '\n' || *str == '\v'
+		|| *str == '\f' || *str == '\r' || *str == ' ')
+		str++;
 	if (*str == '-')
 	{
 		str++;
@@ -55,7 +58,7 @@ int	ft_atoi(const char *str)
 	}
 	else if (*str == '+')
 		str++;
-	while ('0' <= *str && *str < '9')
-		result = result * 10 + (*str - '0') * sgn;
+	while ('0' <= *str && *str <= '9')
+		result = result * 10 + (*str++ - '0') * sgn;
 	return (result);
 }
