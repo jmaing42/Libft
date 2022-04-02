@@ -29,5 +29,7 @@ ifndef GIT_REMOTE_URL
 endif
 	$Qcp -r ./src ./tmp
 	$Q$(MAKE) -C tmp fclean
-	$Qcd tmp && git init && git push $(GIT_REMOTE_URL) master
+	$Qprintf "SRCS := %s\n" "$$(cd src && find . -name "*.c" | xargs)" >> tmp/Makefile
+	$Q(cd tmp && git init && git push $(GIT_REMOTE_URL) master) || (echo "Failed to publish" && rm -rf tmp && false)
+	$Qrm -rf tmp
 .PHONY: all clean fclean re init deinit refresh test publish
