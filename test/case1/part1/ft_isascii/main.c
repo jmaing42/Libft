@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <ctype.h>
 
-extern int ft_isascii(int c);
+extern int	ft_isascii(int c);
 
 int	main(void)
 {

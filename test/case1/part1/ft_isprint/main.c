@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <ctype.h>
 
-extern int ft_isprint(int c);
+extern int	ft_isprint(int c);
 
 int	main(void)
 {

@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <ctype.h>
 
-extern int ft_isalpha(int c);
+extern int	ft_isalpha(int c);
 
 int	main(void)
 {
