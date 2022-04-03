@@ -6,8 +6,9 @@ clean:
 fclean: clean
 re: fclean all
 init: checker
-deinit:
+deinit: fclean
 	$Qrm -f checker
+reinit: deinit init
 refresh: clean
 	$Qrm -rf libft
 	$Qcp -r ../../src libft
@@ -76,7 +77,7 @@ test: init refresh
 	$Qfind libft -name "*.c" | xargs -L1 sh checker.sh
 	$Qmake --no-print-directory clean
 
-.PHONY: all clean fclean re init deinit refresh test
+.PHONY: all clean fclean re init deinit reinit refresh test
 
 checker: checker.c
 	gcc -Wall -Wextra -Werror -o $@ $^
