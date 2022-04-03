@@ -3,15 +3,14 @@ include $(BASE_PATH)/common/variables.mk
 
 all: test
 clean:
-	$Qrm -rf tmp tmp_*
+	$Qrm -rf tmp tmp_* libft_*
 fclean: clean
-	$Qrm -rf tmp libft_*
 re: fclean all
 init:
 deinit:
 	$Q$(MAKE) -C part1 fclean
 reinit: deinit init
-refresh: fclean
+refresh: clean
 	$Qrm -rf libft
 	$Qcp -r $(LIBFT_PATH) libft
 	$Q$(MAKE) libft_normal.a
