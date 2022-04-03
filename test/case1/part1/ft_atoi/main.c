@@ -9,11 +9,11 @@ static const int	g_start[3] = {INT_MIN, -10, INT_MAX - 20};
 static const int	g_end[3] = {INT_MIN + 20, 10, INT_MAX};
 
 static const char	*g_formats[] = {
-	"%zd", "\t%zd", "\n%zd", "\v%zd", "\f%zd", "\r%zd", " %zd", "  %zd", "%zdx",
-	"%+zd ", "+%+zd", "-%+zd", " %+zd", " +%+zd", " -%+zd ", "x%zd", "x%015zd ",
-	"- %zd", "+ %zd", "%zd 0", "%zd_0", "0x%zd", "%zx", "0%zx", " %zx", " %zx0",
-	"%+015zd", "+%+015zd ", "-%+015zd ", " %+015zd ", " +%+015zd ", " -%+015zd",
-	"x%+015zd", "x %+015zd", "\x80%zd", "%zd\x80", "\xFF%zd", "%zd\xFF", "x%zdx"
+	"%d", "\t%d", "\n%d", "\v%d", "\f%d", "\r%d", " %d", "  %d", "%dx", " %d 0",
+	"%+d ", "+%+d", "-%+d", " %+d", " +%+d", " -%+d ", "x%d", "x%015d ", "0%+d",
+	"- %d", "+ %d", "0 %d", "%d 0", "%d_0", "0x%d", "%x", "0%x", " %x", "0b0%d",
+	"\r\n %+015d", "+%+015d ", "-%+015d ", " %+015d ", " +%+015d ", " -%+015d ",
+	"x%+015d", "x %+015d", " \x80%d", " %d\x80", " \xFF%d", " %d\xFF", "\x7F%dx"
 };
 
 int	test(int n)
