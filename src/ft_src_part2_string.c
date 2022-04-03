@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/31 13:09:59 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/03 12:52:18 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char	*ft_strjoin(char const *prefix, char const *suffix)
 
 	if (!result)
 		return (NULL);
-	ft_memcpy(result, suffix, prefix_len);
-	ft_memcpy(&result[prefix_len], suffix, suffix_len);
+	ft_memcpy(result, prefix, prefix_len);
+	ft_memcpy(result + prefix_len, suffix, suffix_len);
 	result[prefix_len + suffix_len] = '\0';
 	return (result);
 }
