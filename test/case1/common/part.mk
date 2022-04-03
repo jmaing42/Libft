@@ -1,5 +1,5 @@
 include $(BASE_PATH)/common/variables.mk
-TESTS := $(wildcard ft_*)
+TESTS += $(wildcard ft_*)
 RULES := all tester clean fclean test
 
 .PHONY: $(RULES)

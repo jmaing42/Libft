@@ -1,10 +1,12 @@
-# requires ADDITIONAL_CC_LD_FLAGS, INTERNAL_LIBFT_PATH
+BASE_PATH := ../../..
 
 include $(BASE_PATH)/common/variables.mk
 
-CFLAGS := -Wall -Wextra -Werror $(ADDITIONAL_CC_LD_FLAGS)
-LDFLAGS := $(ADDITIONAL_CC_LD_FLAGS)
-SRC_DIR := ../..
+INTERNAL_LIBFT_PATH := $(BASE_PATH)/libft/libft.a
+
+CFLAGS := -Wall -Wextra -Werror
+LDFLAGS := -ldl
+SRC_DIR := .
 OBJ_DIR := .
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
