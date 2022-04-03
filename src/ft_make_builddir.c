@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 11:10:03 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/02 17:20:39 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/03 12:26:15 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef void	(*t_r)(
 	const char *recipe
 );
 
-void	variables(void)
+void	variables(char *srcs)
 {
 	const t_v	v = make_common_print_variable;
 
@@ -38,11 +38,12 @@ void	variables(void)
 	v("AR", "ar");
 	v("CC", "clang");
 	v("CFLAGS", "-Wall -Wextra -Werror");
+	v("SRCS", srcs);
 	v("NAME_BONUS", "bonus.a");
 	v("NAME_BASIC", "basic.a");
 	v("SRCS_BONUS", "$(addprefix $(SRC_DIR)/,$(filter ft_src_%.c,$(SRCS)))");
 	v("SRCS_BASIC", "$(filter-out $(addprefix $(SRC_DIR)/," \
-							"$(filter ft_src_%.c,$(SRCS))), $(SRCS_BONUS))");
+						"$(filter ft_src_%_bonus.c,$(SRCS))), $(SRCS_BONUS))");
 	v("SRC_PATH_PREFIX", "$(SRC_DIR)/ft_src_");
 	v("OBJS_BONUS", "$(patsubst $(SRC_PATH_PREFIX)%.c,%.o,$(SRCS_BONUS))");
 	v("OBJS_BASIC", "$(patsubst $(SRC_PATH_PREFIX)%.c,%.o,$(SRCS_BASIC))");
@@ -112,10 +113,12 @@ void	tester_rules(void)
 		"");
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	if (argc != 2)
+		return (-1);
 	make_common_print_header();
-	variables();
+	variables(argv[1]);
 	base_rules();
 	tested_rules();
 	tester_rules();

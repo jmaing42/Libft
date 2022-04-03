@@ -58,11 +58,10 @@ test: init refresh
 	@@make --no-print-directory -C libft re
 	$Qfind libft | cmp tmp_all.txt
 	@echo "1. make re works even if result file is modified"
-	$Qecho "" > libft/libft.a
-	$Qfind libft/libft.a -size 1 | cmp result_libft.txt
+	$Qprintf "" > libft/libft.a
 	@@make --no-print-directory -C libft re
 	$Qfind libft | cmp tmp_all.txt
-	$Qfind libft/libft.a -size 1 | cmp result_empty.txt
+	$Q[ ! "$(wc -c libft/libft.a)" = "0" ]
 	@printf "2. \033[93mRelink(?) must be checked manually!!\033[0m\n"
 	@echo "All Makefile test passed!"
 # norm, compile, disallowed chars

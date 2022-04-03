@@ -39,8 +39,7 @@ try_make_builddir:
 	$Qrm -rf tmp
 	$Qmkdir -p tmp/tmp
 	$Qgcc -Wall -Wextra -Werror -o tmp/makegen ft_make_builddir.c ft_make_common.c
-	$Qtmp/makegen > tmp/Makefile
-	$Qecho "SRCS := $(SRCS)" >> tmp/Makefile
+	$Qtmp/makegen "$(SRCS)" > tmp/Makefile
 	$Qrm -f tmp/makegen
 	$Qmv tmp builddir
 .PHONY: try_make_builddir builddir/basic_tested.a builddir/bonus_tested.a
