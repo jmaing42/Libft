@@ -2,7 +2,7 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
 TESTS += $(wildcard ft_*)
-RULES := all clean fclean re Makefile
+RULES := all clean fclean re
 
 .PHONY: $(RULES)
 define build_common_rule
@@ -19,5 +19,6 @@ $(foreach r, \
 
 .PHONY: clean_makefiles
 clean: clean_makefiles
+fclean: clean_makefiles
 clean_makefiles:
 	ls | grep -E "ft_.*\$$" | xargs -L1 -I {} rm {}/Makefile

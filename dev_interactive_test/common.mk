@@ -5,10 +5,10 @@ BASE_PATH := ../../src
 SRCS := $(wildcard *.c)
 NAME := main.exe
 
-DEFAULT: Makefile
+DEFAULT := Makefile
 
-all: libft.a $(NAME) $(DEFAULT)
-clean: $(DEFAULT)
+all: libft.a $(NAME) | $(DEFAULT)
+clean:
 	$Qrm -rf *.o *.d
 fclean: clean
 	$Qrm -f $(NAME)
@@ -24,4 +24,5 @@ test: all
 .PHONY: all libft.a clean fclean re test
 
 Makefile:
-	cp ../common.mk $@
+	echo Hello world
+	$Qcp ../common.mk $@
