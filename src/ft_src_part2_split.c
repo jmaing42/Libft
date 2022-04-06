@@ -6,24 +6,25 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/06 15:49:03 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/06 16:39:46 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdbool.h>
 
-static char	*ft_strndup(const char *src, int max_len)
+static char	*ft_strndup(const char *src, size_t max_len)
 {
-	int			length;
+	size_t		length;
 	char		*result;
 	const char	*tmp;
 	char		*temp;
 
 	tmp = src;
 	length = 0;
-	while (*tmp++ && length++ < max_len)
+	while (*tmp++ && ++length < max_len)
 		;
-	result = (char *) malloc((length + 1) * sizeof(char));
+	result = (char *) malloc(length + 1);
 	if (!result)
 		return (NULL);
 	temp = result;
@@ -36,7 +37,8 @@ static char	*ft_strndup(const char *src, int max_len)
 
 static const char	*ft_string_find_one_of(
 	const char *str,
-	const char *charset
+	const char *charset,
+	bool negate
 )
 {
 	const char	*tmp;
@@ -45,29 +47,20 @@ static const char	*ft_string_find_one_of(
 	while (*++str)
 	{
 		tmp = charset - 1;
-		while (*++tmp)
-			if (*tmp == *str)
+		if (negate)
+		{
+			while (*++tmp)
+				if (*tmp == *str)
+					break ;
+			if (!*tmp)
 				return (str);
-	}
-	return (str);
-}
-
-static const char	*ft_string_find_not_one_of(
-	const char *str,
-	const char *charset
-)
-{
-	const char	*tmp;
-
-	str--;
-	while (*++str)
-	{
-		tmp = charset - 1;
-		while (*++tmp)
-			if (*tmp == *str)
-				break ;
-		if (!*tmp)
-			return (str);
+		}
+		else
+		{
+			while (*++tmp)
+				if (*tmp == *str)
+					return (str);
+		}
 	}
 	return (str);
 }
@@ -79,17 +72,17 @@ static int	ft_split_internal_alloc(
 )
 {
 	char	**result;
-	int		length;
+	size_t	length;
 
 	length = 0;
-	str = ft_string_find_not_one_of(str, charset);
+	str = ft_string_find_one_of(str, charset, true);
 	while (*str)
 	{
 		length++;
-		str = ft_string_find_one_of(str, charset);
+		str = ft_string_find_one_of(str, charset, false);
 		if (!*str)
 			break ;
-		str = ft_string_find_not_one_of(str, charset);
+		str = ft_string_find_one_of(str, charset, true);
 	}
 	result = (char **) malloc(sizeof(char *) * (length + 1));
 	if (!result)
@@ -99,24 +92,41 @@ static int	ft_split_internal_alloc(
 	return (0);
 }
 
+static void	ft_split_free(char	**null_terminated_strings)
+{
+	char	**tmp;
+
+	tmp = null_terminated_strings;
+	while (*tmp)
+		free(*tmp++);
+	free(tmp);
+}
+
 char	**ft_split(const char *str, char c)
 {
 	char		**result;
-	int			index;
+	size_t		index;
+	bool		alloc_failed;
 	const char	*tmp;
 	const char	charset[2] = {c, '\0'};
 
+	alloc_failed = false;
 	if (ft_split_internal_alloc(str, charset, &result))
 		return (NULL);
 	index = 0;
-	str = ft_string_find_not_one_of(str, charset);
+	str = ft_string_find_one_of(str, charset, true);
 	while (*str)
 	{
-		tmp = ft_string_find_one_of(str, charset);
-		result[index++] = ft_strndup(str, tmp - str);
-		if (!*tmp)
+		tmp = ft_string_find_one_of(str, charset, false);
+		result[index] = ft_strndup(str, tmp - str);
+		if (!result[index++])
+			alloc_failed = true;
+		if (!*tmp || alloc_failed)
 			break ;
-		str = ft_string_find_not_one_of(tmp, charset);
+		str = ft_string_find_one_of(tmp, charset, true);
 	}
-	return (result);
+	if (!alloc_failed)
+		return (result);
+	ft_split_free(result);
+	return (NULL);
 }

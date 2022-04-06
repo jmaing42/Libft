@@ -4,9 +4,9 @@ MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 all: test
 clean:
 	$Qrm -rf tmp libft
-	$Q[ -d libft_tester ] && mkdir -p libft && echo "clean:" > libft/Makefile && $(MAKE) -C libft_tester clean && rm -rf libft
+	$Q[ -d libft_tester ] && mkdir -p libft && echo "clean:" > libft/Makefile && $(MAKE) -C libft_tester clean && rm -rf libft || true
 fclean: clean
-	$Q[ -d libft_tester ] && mkdir -p libft && echo "fclean:" > libft/Makefile && $(MAKE) -C libft_tester fclean && rm -rf libft
+	$Q[ -d libft_tester ] && mkdir -p libft && echo "fclean:" > libft/Makefile && $(MAKE) -C libft_tester fclean && rm -rf libft || true
 re: fclean all
 init: | libft_tester
 deinit: fclean
@@ -15,8 +15,9 @@ reinit: deinit init
 refresh:
 	$Qrm -rf libft
 	$Qcp -r ../../src libft
+	$Q[ ! -d libft_tester ] || $(MAKE) -C libft_tester clean
 test: init refresh
-	$(MAKE) -C libft_tester a
+	$Q$(MAKE) -C libft_tester a
 .PHONY: all clean fclean re init deinit reinit refresh test
 
 libft_tester:

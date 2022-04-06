@@ -15,14 +15,14 @@ int	main(void)
 
 	while (true)
 	{
-		fseek(stdin, 0, SEEK_END);
 		printf("Enter string to trim: ");
 		if (scanf("%1023[^\n]", g_buffer_1) != 1)
 			break ;
-		fseek(stdin, 0, SEEK_END);
+		getchar();
 		printf("Enter separator set: ");
 		if (scanf("%1023[^\n]", g_buffer_2) != 1)
 			break ;
+		getchar();
 		result = ft_strtrim(g_buffer_1, g_buffer_2);
 		if (!result)
 			continue ;
