@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/31 13:08:27 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/06 19:58:59 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,27 @@ char	*ft_itoa(int n)
 	const int	sgn = (n >= 0) * 2 - 1;
 	char		*result;
 	size_t		len;
+	int			tmp;
 
 	if (!n)
 		return (ft_strdup("0"));
 	len = 0;
-	while (n)
+	tmp = n;
+	while (tmp)
 	{
-		n /= 10;
+		tmp /= 10;
 		len++;
 	}
 	result = (char *) malloc(len + 1);
 	if (!result)
 		return (NULL);
+	if (sgn < 0)
+	{
+		len++;
+		result[0] = '-';
+	}
 	result[len] = '\0';
 	itoa_internal(n, sgn, result + len);
-	if (sgn < 0)
-		result[0] = '-';
 	return (result);
 }
 
