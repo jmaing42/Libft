@@ -24,5 +24,4 @@ test: all
 .PHONY: all libft.a clean fclean re test
 
 Makefile:
-	echo Hello world
 	$Qcp ../common.mk $@
