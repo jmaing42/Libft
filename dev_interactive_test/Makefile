@@ -2,9 +2,9 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
 TESTS += $(wildcard ft_*)
-RULES := all clean fclean re
+RULES := all clean fclean re Makefile
 
-.PHONY: $(RULES)
+.PHONY: $(filter-out Makefile,$(RULES))
 define build_common_rule
 $1:
 	$Q$(foreach t,$(TESTS),$(MAKE) -C $t -f ../common.mk $1 && )true
