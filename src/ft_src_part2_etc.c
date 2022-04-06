@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/06 20:02:32 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/06 20:03:35 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static void	itoa_internal(int n, int sgn, char *dest)
 		itoa_internal(n / 10, sgn, dest - 1);
 	dest[-1] = (char)('0' + sgn * (n % 10));
 }
-
-#include <stdio.h>
 
 char	*ft_itoa(int n)
 {
