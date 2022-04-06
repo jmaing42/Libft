@@ -2,7 +2,7 @@
 # If tester's source files were modified, run make in appropriate directory
 
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := make --no-print-directory
+MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
 # This variable will be overriden by script-generated file list
 SRCS := $(wildcard *.c)
