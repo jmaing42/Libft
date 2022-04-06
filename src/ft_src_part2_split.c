@@ -6,17 +6,18 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/06 22:09:35 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/06 15:49:03 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static char	*ft_strndup(char *src, int max_len)
+static char	*ft_strndup(const char *src, int max_len)
 {
-	int		length;
-	char	*result;
-	char	*tmp;
+	int			length;
+	char		*result;
+	const char	*tmp;
+	char		*temp;
 
 	tmp = src;
 	length = 0;
@@ -25,17 +26,20 @@ static char	*ft_strndup(char *src, int max_len)
 	result = (char *) malloc((length + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
-	tmp = result;
+	temp = result;
 	length = 0;
 	while (*src && length++ < max_len)
-		*tmp++ = *src++;
-	*tmp = '\0';
+		*temp++ = *src++;
+	*temp = '\0';
 	return (result);
 }
 
-static char	*ft_string_find_one_of(char *str, char *charset)
+static const char	*ft_string_find_one_of(
+	const char *str,
+	const char *charset
+)
 {
-	char	*tmp;
+	const char	*tmp;
 
 	str--;
 	while (*++str)
@@ -48,9 +52,12 @@ static char	*ft_string_find_one_of(char *str, char *charset)
 	return (str);
 }
 
-static char	*ft_string_find_not_one_of(char *str, char *charset)
+static const char	*ft_string_find_not_one_of(
+	const char *str,
+	const char *charset
+)
 {
-	char	*tmp;
+	const char	*tmp;
 
 	str--;
 	while (*++str)
@@ -65,7 +72,11 @@ static char	*ft_string_find_not_one_of(char *str, char *charset)
 	return (str);
 }
 
-static int	ft_split_internal_alloc(char *str, char *charset, char ***out)
+static int	ft_split_internal_alloc(
+	const char *str,
+	const char *charset,
+	char ***out
+)
 {
 	char	**result;
 	int		length;
@@ -80,7 +91,7 @@ static int	ft_split_internal_alloc(char *str, char *charset, char ***out)
 			break ;
 		str = ft_string_find_not_one_of(str, charset);
 	}
-	result = malloc(sizeof(char *) * (length + 1));
+	result = (char **) malloc(sizeof(char *) * (length + 1));
 	if (!result)
 		return (1);
 	result[length] = NULL;
@@ -88,15 +99,13 @@ static int	ft_split_internal_alloc(char *str, char *charset, char ***out)
 	return (0);
 }
 
-char	**ft_split(char *str, char c)
+char	**ft_split(const char *str, char c)
 {
-	char	**result;
-	char	*tmp;
-	int		index;
-	char	charset[2];
+	char		**result;
+	int			index;
+	const char	*tmp;
+	const char	charset[2] = {c, '\0'};
 
-	charset[0] = c;
-	charset[1] = '\0';
 	if (ft_split_internal_alloc(str, charset, &result))
 		return (NULL);
 	index = 0;
