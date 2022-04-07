@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_make_builddir_tester_common.c                   :+:      :+:    :+:   */
+/*   ft_part1_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 12:54:40 by jmaing            #+#    #+#             */
-/*   Updated: 2022/03/31 12:25:30 by jmaing           ###   ########.fr       */
+/*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
+/*   Updated: 2022/04/07 18:57:17 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <limits.h>
 
-static const char *const	g_makefile_contents = "" \
-	"all: tester.a\n" \
-	"tester.a: tester.o\n" \
-	"	@ar cr tester.a tester.o\n" \
-	"tester.o: tester.c\n" \
-	"	@gcc -o tester.o -Wall -Wextra -Werror -c tester.c\n" \
-	"tester.c:\n" \
-	"	@echo \"" \
-				"int main() { return 0; }" \
-			"\" > tester.c\n" \
-	"";
+#include "libft.h"
 
-int	main(void)
+int	ft_isalpha(int c)
 {
-	printf("%s", g_makefile_contents);
-	return (0);
+	return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
+}
+
+int	ft_isdigit(int c)
+{
+	return ('0' <= c && c <= '9');
+}
+
+int	ft_isalnum(int c)
+{
+	return (ft_isalpha(c) || ft_isdigit(c));
+}
+
+int	ft_isascii(int c)
+{
+	return (0 <= c && c <= SCHAR_MAX);
+}
+
+int	ft_isprint(int c)
+{
+	return (32 <= c && c <= 126);
 }
