@@ -6,7 +6,7 @@
 /*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 16:56:41 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/06 17:09:40 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/04/07 15:26:12 by jmaing           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_lstadd_front(t_list **lst, t_list *node)
 	*lst = node;
 }
 
-int		ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int	result;
 
