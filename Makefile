@@ -25,13 +25,13 @@ refresh:
 test:
 	$Q$(MAKE) -C test test
 	@echo "Some test might need manual review"
-publish_without_test: fclean
+publish_without_test:
 ifndef GIT_REMOTE_URL
 	$(error GIT_REMOTE_URL is undefined)
 endif
 	$Qcp -r ./src ./tmp
 	$Q$(MAKE) -C tmp fclean
-	$Qprintf "SRCS := %s\n" "$$(cd src && find . -name "*.c" | cut -c 3- | xargs)" >> tmp/Makefile
+	$Qprintf "# script-generated file list\nSRCS := %s\n\n" "$$(cd src && find . -name "*.c" | cut -c 3- | xargs)" | cat - src/Makefile > tmp/Makefile
 	$Q(cd tmp && git init && git add . && git commit -m "Initial commit" && git push "$(GIT_REMOTE_URL)" HEAD:master) || (echo "Failed to publish" && rm -rf tmp && false)
 	$Qrm -rf tmp
 	$Qgit push "$(GIT_REMOTE_URL)" HEAD:source | echo "Failed to push HEAD to source"
