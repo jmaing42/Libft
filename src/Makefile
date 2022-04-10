@@ -45,7 +45,7 @@ generate_header_bonus:
 .editorconfig:
 	$Qprintf "root = true\n\n[*]\ncharset = utf-8\nend_of_line = lf\nindent_size = 4\nindent_style = tab\ninsert_final_newline = true\ntrim_trailing_whitespace = true\n" > .editorconfig
 .gitignore:
-	$Qprintf ".*\ntmp\nbuilddir\n\nlibft.a\nft.h\n" > .gitignore
+	$Qprintf ".*\n*.o\n*.d\n\nlibft.a\nft.h\n" > .gitignore
 
 $(NAME_BASIC): $(OBJS_BASIC)
 	$Qrm -f $@
@@ -53,7 +53,7 @@ $(NAME_BASIC): $(OBJS_BASIC)
 $(NAME_BONUS): $(OBJS)
 	$Qrm -f $@
 	$Q$(AR) cr $@ $^
-%.o: $(SRC_PATH_PREFIX)%.c
+%.o: %.c
 	$Q$(CC) $(CFLAGS) -c $< -o $@ -MMD
 
 -include $(DEPS)
