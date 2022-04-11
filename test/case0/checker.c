@@ -11,7 +11,7 @@ int	main(void)
 
 	i = -1;
 	while (++i <= SCHAR_MAX)
-		g_chars_allowed[i] = i == '\n' || i == '\t' || isprint(i);
+		g_chars_allowed[i] = (i == '\n' || i == '\t' || isprint(i));
 	while (scanf("%c", &c) == 1)
 		if (!g_chars_allowed[(signed char) c])
 			return (-1);
