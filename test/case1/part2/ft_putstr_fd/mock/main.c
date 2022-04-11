@@ -17,8 +17,6 @@ static bool		ok(void);
 static char			g_buffer[BUFFER_SIZE];
 static char			g_buffer_copy[BUFFER_SIZE];
 
-#include <stdio.h>
-
 int	test(size_t length, bool test_partial)
 {
 	const int	fd = rand() % 5 * 42;
