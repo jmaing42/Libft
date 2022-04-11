@@ -29,6 +29,7 @@ publish_without_test:
 ifndef GIT_REMOTE_URL
 	$(error GIT_REMOTE_URL is undefined)
 endif
+	$Qrm -rf tmp
 	$Qcp -r ./src ./tmp
 	$Q$(MAKE) -C tmp fclean
 	$Qprintf "# script-generated file list\nSRCS := %s\n\n" "$$(cd src && find . -name "*.c" | cut -c 3- | xargs)" | cat - src/Makefile > tmp/Makefile
