@@ -33,7 +33,7 @@ reinit: deinit init
 refresh:
 	$Qrm -rf libft
 	$Qcp -r ../../src libft
-test: init refresh
+test: init refresh clean
 ifeq ($(OS),Windows_NT)
 	@echo "Windows detected, no libft_unit_test"
 else
