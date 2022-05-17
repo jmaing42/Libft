@@ -1,5 +1,5 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
+MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
 TESTS += $(wildcard ft_*)
 RULES := all clean fclean re

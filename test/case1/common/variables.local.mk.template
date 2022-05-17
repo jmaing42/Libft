@@ -4,7 +4,7 @@
 # Q :=
 
 ## custom make executable?
-# MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
+# MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
 # CC := (C compiler like clang)
 # CXX := (C++ compiler like clang++)

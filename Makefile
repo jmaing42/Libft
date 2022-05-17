@@ -1,5 +1,7 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
+MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
+
+MAKE += -j $(shell nproc.sh)
 
 all: test
 clean:
@@ -23,7 +25,7 @@ reinit:
 refresh:
 	$Q$(MAKE) -C test refresh
 test:
-	$Q$(MAKE) -C test -j $(shell nproc.sh) test
+	$Q$(MAKE) -C test test
 	@echo "Some test might need manual review"
 publish_without_test:
 ifndef GIT_REMOTE_URL
