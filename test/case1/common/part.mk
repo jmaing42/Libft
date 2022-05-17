@@ -6,6 +6,7 @@ RULES := all tester clean fclean test
 define build_common_rule
 $1:
 	$Q$(foreach t,$(TESTS),$(MAKE) -C $t $1 && )true
+	$Q$(foreach t,$(OPTIONAL_TESTS),$(MAKE) -C $t $1 || (echo "Optional test $t failed." && false) ; )true
 endef
 $(foreach r, \
 	$(RULES), \
