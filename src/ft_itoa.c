@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part2_etc.c                                     :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/07 18:57:35 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/18 01:17:33 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,37 +47,5 @@ char	*ft_itoa(int n)
 		result[0] = '-';
 	result[len] = '\0';
 	itoa_internal(n, sgn, result + len);
-	return (result);
-}
-
-void	ft_striteri(char *str, void (*f)(unsigned int index, char *inout_c))
-{
-	unsigned int	index;
-
-	if (str)
-	{
-		index = 0;
-		while (str[index])
-		{
-			f(index, str + index);
-			index++;
-		}
-	}
-}
-
-char	*ft_strmapi(char const *str, char (*f)(unsigned int index, char c))
-{
-	char *const		result = ft_strdup(str);
-	unsigned int	index;
-
-	if (result)
-	{
-		index = 0;
-		while (result[index])
-		{
-			result[index] = f(index, result[index]);
-			index++;
-		}
-	}
 	return (result);
 }

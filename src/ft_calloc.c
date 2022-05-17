@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part1_char.c                                    :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/07 18:57:17 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/18 01:14:51 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+void	*ft_calloc(size_t count, size_t item_size)
 {
-	return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
-}
+	const size_t	len = count * item_size;
+	void *const		result = malloc(len);
 
-int	ft_isdigit(int c)
-{
-	return ('0' <= c && c <= '9');
-}
-
-int	ft_isalnum(int c)
-{
-	return (ft_isalpha(c) || ft_isdigit(c));
-}
-
-int	ft_isascii(int c)
-{
-	return (0 <= c && c <= SCHAR_MAX);
-}
-
-int	ft_isprint(int c)
-{
-	return (32 <= c && c <= 126);
+	if (!result)
+		return (NULL);
+	ft_bzero(result, len);
+	return (result);
 }

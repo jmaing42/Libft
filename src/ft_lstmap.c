@@ -1,45 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part3_advanced_bonus.c                          :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:03:16 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/07 18:57:49 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/18 01:21:53 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "libft.h"
-
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	del(lst->content);
-	free(lst);
-}
-
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	t_list	*next;
-
-	while (*lst)
-	{
-		next = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next;
-	}
-}
-
-void	ft_lstiter(t_list *lst, void (*f)(void *))
-{
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
-}
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

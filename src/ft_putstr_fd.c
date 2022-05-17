@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_part2_print.c                                   :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/04/07 18:57:39 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/18 01:18:40 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 #include <unistd.h>
 
 #include "libft.h"
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
 
 void	ft_putstr_fd(char *str, int fd)
 {
@@ -37,35 +32,5 @@ void	ft_putstr_fd(char *str, int fd)
 			return ;
 		remain -= (size_t) wrote;
 		str = str + wrote;
-	}
-}
-
-void	ft_putendl_fd(char *str, int fd)
-{
-	ft_putstr_fd(str, fd);
-	ft_putchar_fd('\n', fd);
-}
-
-static void	putnbr_internal(int n, int fd, int sgn)
-{
-	if (n / 10)
-		putnbr_internal(n / 10, fd, sgn);
-	ft_putchar_fd((char)('0' + sgn * (n % 10)), fd);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	if (!n)
-	{
-		ft_putchar_fd('0', fd);
-	}
-	else if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		putnbr_internal(n, fd, -1);
-	}
-	else
-	{
-		putnbr_internal(n, fd, 1);
 	}
 }
