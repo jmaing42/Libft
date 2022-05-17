@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/18 01:12:01 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/04/06 17:03:16 by jmaing            #+#    #+#             */
+/*   Updated: 2022/05/18 01:27:18 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	char	*result;
-	size_t	size;
+	t_list	*next;
 
-	size = ft_strlen(str) + 1;
-	result = (char *) malloc(size);
-	if (!result)
-		return (NULL);
-	ft_memcpy(result, str, size);
-	return ((char *) result);
+	while (*lst)
+	{
+		next = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = next;
+	}
 }
