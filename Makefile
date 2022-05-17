@@ -1,7 +1,7 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
-MAKE += -j $(shell nproc.sh)
+MAKE += -j $(shell sh nproc.sh)
 
 all: test
 clean:
