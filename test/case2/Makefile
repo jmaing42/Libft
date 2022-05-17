@@ -42,7 +42,7 @@ ifeq ($(OS),Windows_NT)
 else
 ifeq ($(shell uname -s),Darwin)
 	$Q$(MAKE) -C libft_unit_test clean
-	$QCFLAGS= $(MAKE) -e -C libft_unit_test f
+	$QCFLAGS= $(MAKE) -e -j 1 -C libft_unit_test f || printf "\033[93mError occurred...\033[0m\n"
 else
 	@echo "Non-mac OS detected, no libft_unit_test"
 endif
