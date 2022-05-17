@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 00:54:47 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/18 00:54:48 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/18 01:00:04 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static const char	*g_formats[] = {
 const char	*test(int n, int (*a)(const char *str), int (*b)(const char *str))
 {
 	char	str[20];
-	int		err;
 	size_t	i;
 
 	i = 0;
@@ -34,7 +33,7 @@ const char	*test(int n, int (*a)(const char *str), int (*b)(const char *str))
 	{
 		snprintf(str, sizeof(str), g_formats[i], n);
 		if (a(str) != b(str))
-			return (str);
+			return (g_formats[i]);
 		i++;
 	}
 	return (NULL);
