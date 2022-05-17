@@ -12,7 +12,7 @@ HEADER_NAME := ft.h
 OTHER_USEFUL_FILES := .other_file_tracker .editorconfig .gitignore
 
 AR := ar
-CC := clang
+CC := cc
 CFLAGS := -Wall -Wextra -Werror
 NAME_BONUS := bonus.a
 NAME_BASIC := basic.a

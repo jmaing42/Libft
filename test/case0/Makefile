@@ -2,8 +2,9 @@ Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
 
 all: test
 clean:
-	$Qrm -rf libft tmp_*.txt
+	$Qrm -rf libft tmp_*.txt tmp
 fclean: clean
+	$Qrm -rf bin
 re: fclean all
 init: checker
 deinit: fclean
@@ -12,7 +13,7 @@ reinit: deinit init
 refresh: clean
 	$Qrm -rf libft
 	$Qcp -r ../../src libft
-test: init refresh
+test: init refresh bin
 	@printf "\033[93mAssuming make fclean make initial state - must be manually checked.\033[0m\n"
 # make fclean
 	@echo "Testing make fclean"
@@ -66,12 +67,13 @@ test: init refresh
 	@echo "All Makefile test passed!"
 # norm, compile, disallowed chars
 	@echo "Testing norm, compile, disallowed chars"
+	@echo "0. Must use cc command (error expected)"
+	$Q( ! PATH="$$(pwd)/bin:$$PATH" make -C libft re ) || (echo COMMAND cc NOT CALLED! && false)
 	@@make --no-print-directory -C libft fclean
-	@echo "0. Makefile"
-	$Q./checker < libft/Makefile || ("File Makefile has disallowed characters" && exit 1)
-	@echo "1. libft.h"
-	$Q./checker < libft/libft.h || ("File libft.h has disallowed characters" && exit 1)
-	$Qnorminette libft/libft.h > libft/libft.h.norm.txt || (echo "Norm error on libft.h" && cat libft/libft.h.norm.txt && exit 1)
+	@echo "1. Makefile and libft.h"
+	$Q./checker < libft/Makefile || ("File Makefile has disallowed characters" && false)
+	$Q./checker < libft/libft.h || ("File libft.h has disallowed characters" && false)
+	$Qnorminette libft/libft.h > libft/libft.h.norm.txt || (echo "Norm error on libft.h" && cat libft/libft.h.norm.txt && false)
 	@echo "2. C files"
 	$Qfind libft -name "*.c" | xargs -L1 sh checker.sh
 	$Qmake --no-print-directory clean
@@ -80,3 +82,8 @@ test: init refresh
 
 checker: checker.c
 	gcc -Wall -Wextra -Werror -o $@ $^
+bin:
+	$Qmkdir -p tmp
+	$Qcp cc.sh tmp/cc
+	$Qchmod a+x tmp/cc
+	$Qmv tmp bin
