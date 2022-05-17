@@ -21,7 +21,7 @@ refresh:
 	$Qcp -r ../../src libft
 	$Q[ ! -d libft_tester ] || $(MAKE) -C libft_tester clean
 test: init refresh
-	$Q$(MAKE) -C libft_tester a
+	$Q$(MAKE) -C libft_tester -j 1 a
 .PHONY: all clean fclean re init deinit reinit refresh test
 
 libft_tester:

@@ -28,20 +28,20 @@ re:
 	$Q$(MAKE) fclean
 	$Q$(MAKE) all
 init: | libft_unit_test
-deinit: fclean
-	$Qrm -rf tmp
-	$Qrm -rf libft_unit_test
+deinit:
+	$Qrm -rf tmp libft libft_unit_test
 reinit:
 	$Q$(MAKE) deinit
 	$Q$(MAKE) init
 refresh:
 	$Qrm -rf libft
 	$Qcp -r ../../src libft
-test: init refresh clean
+test: init refresh
 ifeq ($(OS),Windows_NT)
 	@echo "Windows detected, no libft_unit_test"
 else
 ifeq ($(shell uname -s),Darwin)
+	$Q$(MAKE) -C libft_unit_test clean
 	$Q$(MAKE) -C libft_unit_test f
 else
 	@echo "Non-mac OS detected, no libft_unit_test"
