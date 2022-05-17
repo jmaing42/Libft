@@ -23,7 +23,7 @@ reinit:
 refresh:
 	$Q$(MAKE) -C test refresh
 test:
-	$Q$(MAKE) -C test test
+	$Q$(MAKE) -C test -j $(shell nproc.sh) test
 	@echo "Some test might need manual review"
 publish_without_test:
 ifndef GIT_REMOTE_URL

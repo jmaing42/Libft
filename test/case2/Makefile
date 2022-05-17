@@ -24,12 +24,16 @@ else
 	@echo "Non-mac OS detected, no libft_unit_test"
 endif
 endif
-re: fclean all
+re:
+	$Q$(MAKE) fclean
+	$Q$(MAKE) all
 init: | libft_unit_test
 deinit: fclean
 	$Qrm -rf tmp
 	$Qrm -rf libft_unit_test
-reinit: deinit init
+reinit:
+	$Q$(MAKE) deinit
+	$Q$(MAKE) init
 refresh:
 	$Qrm -rf libft
 	$Qcp -r ../../src libft

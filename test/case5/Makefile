@@ -7,11 +7,15 @@ clean:
 	$Q[ -d libft_tester ] && mkdir -p libft && echo "clean:" > libft/Makefile && $(MAKE) -C libft_tester clean && rm -rf libft || true
 fclean: clean
 	$Q[ -d libft_tester ] && mkdir -p libft && echo "fclean:" > libft/Makefile && $(MAKE) -C libft_tester fclean && rm -rf libft || true
-re: fclean all
+re:
+	$Q$(MAKE) fclean
+	$Q$(MAKE) all
 init: | libft_tester
 deinit: fclean
 	$Qrm -rf libft_tester
-reinit: deinit init
+reinit:
+	$Q$(MAKE) deinit
+	$Q$(MAKE) init
 refresh:
 	$Qrm -rf libft
 	$Qcp -r ../../src libft

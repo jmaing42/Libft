@@ -5,11 +5,15 @@ clean:
 	$Qrm -rf libft tmp_*.txt tmp
 fclean: clean
 	$Qrm -rf bin
-re: fclean all
+re:
+	$Q$(MAKE) fclean
+	$Q$(MAKE) all
 init: checker
 deinit: fclean
 	$Qrm -f checker
-reinit: deinit init
+reinit:
+	$Q$(MAKE) deinit
+	$Q$(MAKE) init
 refresh: clean
 	$Qrm -rf libft
 	$Qcp -r ../../src libft

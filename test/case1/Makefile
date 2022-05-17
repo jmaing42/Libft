@@ -5,11 +5,15 @@ all: test
 clean:
 	$Qrm -rf tmp tmp_* libft_*
 fclean: clean
-re: fclean all
+re:
+	$Q$(MAKE) fclean
+	$Q$(MAKE) all
 init:
 deinit:
 	$Q$(MAKE) -C part1 fclean
-reinit: deinit init
+reinit:
+	$Q$(MAKE) deinit
+	$Q$(MAKE) init
 refresh: clean
 	$Qrm -rf libft
 	$Qcp -r $(LIBFT_PATH) libft

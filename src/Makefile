@@ -2,7 +2,7 @@
 # If tester's source files were modified, run make in appropriate directory
 
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
+MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
 # This variable will be used only if source files are not hardcoded
 SRCS ?= $(wildcard *.c)
@@ -26,7 +26,9 @@ clean:
 	$Qrm -rf *.o *.d $(NAME_BASIC) $(NAME_BONUS) $(OTHER_USEFUL_FILES) $(HEADER_NAME)
 fclean: clean
 	$Qrm -f $(NAME)
-re: fclean all
+re:
+	$Q$(MAKE) fclean
+	$Q$(MAKE) all
 .PHONY: all clean fclean re
 
 $(NAME): $(NAME_BASIC) $(OTHER_USEFUL_FILES) generate_header_basic

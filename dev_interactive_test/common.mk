@@ -1,5 +1,5 @@
 Q := $(if $(filter 1,$(V) $(VERBOSE)),,@)
-MAKE := make $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
+MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
 BASE_PATH := ../../src
 SRCS := $(wildcard *.c)
@@ -12,7 +12,9 @@ clean:
 	$Qrm -rf *.o *.d
 fclean: clean
 	$Qrm -f $(NAME)
-re: fclean all
+re:
+	$Q$(MAKE) fclean
+	$Q$(MAKE) all
 %.o: %.c
 	$Qgcc -c -o $@ $< -Wall -Wextra -Werror -I$(BASE_PATH) -MMD
 $(NAME): $(SRCS:.c=.o) $(BASE_PATH)/builddir/basic.a
