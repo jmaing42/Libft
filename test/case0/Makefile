@@ -88,6 +88,7 @@ test: init refresh bin
 checker: checker.c
 	gcc -Wall -Wextra -Werror -o $@ $^
 bin:
+	$Qrm -rf tmp
 	$Qmkdir -p tmp
 	$Qcp cc.sh tmp/cc
 	$Qchmod a+x tmp/cc
