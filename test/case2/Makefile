@@ -8,7 +8,7 @@ ifeq ($(OS),Windows_NT)
 	@echo "Windows detected, no libft_unit_test"
 else
 ifeq ($(shell uname -s),Darwin)
-	$Q[ -d libft_unit_test ] && $(MAKE) -C libft_unit_test clean
+	$Q[ ! -d libft_unit_test ] || $(MAKE) -C libft_unit_test clean
 else
 	@echo "Non-mac OS detected, no libft_unit_test"
 endif
@@ -19,7 +19,7 @@ ifeq ($(OS),Windows_NT)
 	@echo "Windows detected, no libft_unit_test"
 else
 ifeq ($(shell uname -s),Darwin)
-	$Q[ -d libft_unit_test ] && $(MAKE) -C libft_unit_test fclean
+	$Q[ ! -d libft_unit_test ] || $(MAKE) -C libft_unit_test fclean
 else
 	@echo "Non-mac OS detected, no libft_unit_test"
 endif
