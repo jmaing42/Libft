@@ -59,9 +59,9 @@ libft_msan.a:
 	$Qar cr libft_msan.a tmp/*.o
 	$Qrm -rf tmp
 libft_ubsan.a:
-	$Qecho "int main(){return 0;}" | $(CC) -x c - -fsanitize=undefined -fsanitize=nullability -fsanitize=float-divide-by-zero -fsanitize=unsigned-integer-overflow -fsanitize=implicit-conversion -fsanitize=local-bounds -o tmp_ubsan.exe || (printf "\033[93m(optional) ubsan not supported\033[0m\n" && false)
+	$Qecho "int main(){return 0;}" | $(CC) -x c - -fsanitize=undefined -fsanitize=nullability -fsanitize=implicit-conversion -fsanitize=local-bounds -o tmp_ubsan.exe || (printf "\033[93m(optional) ubsan not supported\033[0m\n" && false)
 	$Qrm -rf tmp
 	$Qmkdir tmp
-	$Qls -1 libft | grep -E "\\.c\$$" | xargs -L1 -I {} $(CC) -c -Wall -Wextra -Werror -g3 -fsanitize=undefined -fsanitize=nullability -fsanitize=float-divide-by-zero -fsanitize=unsigned-integer-overflow -fsanitize=implicit-conversion -fsanitize=local-bounds -o tmp/{}.o libft/{}
+	$Qls -1 libft | grep -E "\\.c\$$" | xargs -L1 -I {} $(CC) -c -Wall -Wextra -Werror -g3 -fsanitize=undefined -fsanitize=nullability -fsanitize=implicit-conversion -fsanitize=local-bounds -o tmp/{}.o libft/{}
 	$Qar cr libft_ubsan.a tmp/*.o
 	$Qrm -rf tmp
