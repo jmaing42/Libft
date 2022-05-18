@@ -17,6 +17,7 @@ clean:
 fclean: clean
 	$Qrm -f tester.a
 test: tester
+	@echo "Testing $(TEST_NAME)..."
 	$Q./tester
 .PHONY: all clean fclean test
 

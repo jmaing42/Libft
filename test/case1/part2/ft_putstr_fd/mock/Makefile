@@ -19,6 +19,7 @@ clean:
 fclean: clean
 	$Qrm -f tester.a
 test: tester
+	@echo "Testing ft_putstr_fd with write() mock... (optional)"
 	$Q./tester
 .PHONY: all clean fclean test
 

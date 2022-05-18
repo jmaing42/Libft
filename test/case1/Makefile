@@ -4,7 +4,14 @@ include $(BASE_PATH)/common/variables.mk
 all: test
 clean:
 	$Qrm -rf tmp tmp_* libft_*
-fclean: clean
+	$Q$(MAKE) -C part1 clean
+	$Q$(MAKE) -C part2 clean
+	$Q$(MAKE) -C part3 clean
+fclean:
+	$Qrm -rf tmp tmp_* libft_*
+	$Q$(MAKE) -C part1 fclean
+	$Q$(MAKE) -C part2 fclean
+	$Q$(MAKE) -C part3 fclean
 re:
 	$Q$(MAKE) fclean
 	$Q$(MAKE) all
