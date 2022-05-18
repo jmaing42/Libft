@@ -22,6 +22,7 @@ ifeq ($(OS),Windows_NT)
 else
 ifeq ($(shell uname -s),Darwin)
 	$QPATH_LIBFT="$(abspath libft)" sh libft_war_machine/grademe.sh
+else
 	@echo "Non-mac OS detected, no libft_war_machine"
 endif
 endif
