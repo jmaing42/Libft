@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/18 01:13:32 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/21 02:16:21 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strchr(const char *str, int c)
 	char		to_find;
 
 	result = NULL;
-	to_find = (char) c;
+	*((unsigned char *)&to_find) = (unsigned char) c;
 	if (!to_find)
 		result = str + ft_strlen(str);
 	else
