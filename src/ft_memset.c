@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/18 01:14:04 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/21 01:52:28 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 void	*ft_memset(void *mem, int value, size_t len)
 {
-	char	*ptr;
+	unsigned char	*ptr;
 
-	ptr = (char *) mem;
+	ptr = (unsigned char *) mem;
 	while (len--)
-		*ptr++ = (signed char) value;
+		*ptr++ = (unsigned char) value;
 	return (mem);
 }
