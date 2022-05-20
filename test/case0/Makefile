@@ -3,9 +3,9 @@ MAKE := $(MAKE) $(if $(filter 1,$(V) $(VERBOSE)),,--no-print-directory)
 
 all: test
 clean:
-	$Qrm -rf libft tmp_*.txt tmp
+	$Qrm -rf libft tmp_*.txt
 fclean: clean
-	$Qrm -rf bin
+	$Qrm -rf bin tmp
 re:
 	$Q$(MAKE) fclean
 	$Q$(MAKE) all
@@ -18,7 +18,7 @@ reinit:
 refresh: clean
 	$Qrm -rf libft
 	$Qcp -r ../../src libft
-test: init refresh bin
+test: init refresh | bin
 	@printf "\033[93mAssuming make fclean make initial state - must be manually checked.\033[0m\n"
 # make fclean
 	@echo "Testing make fclean"
