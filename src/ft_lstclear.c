@@ -6,11 +6,9 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 17:03:16 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/18 01:27:18 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/23 02:06:35 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
 
 #include "libft.h"
 

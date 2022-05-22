@@ -6,11 +6,10 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/18 01:19:01 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/23 02:08:48 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
 #include <unistd.h>
 
 #include "libft.h"
