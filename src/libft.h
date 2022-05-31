@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/08 13:39:25 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/22 19:55:56 by jmaing           ###   ########.fr       */
+/*   Created: 2022/03/08 13:39:25 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/05/31 16:06:30 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
