@@ -6,14 +6,11 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/31 16:05:10 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/05/31 16:05:53 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <stdbool.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 #include "libft.h"
 
