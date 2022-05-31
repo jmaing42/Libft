@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmaing <jmaing@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by jmaing            #+#    #+#             */
-/*   Updated: 2022/05/22 19:57:17 by jmaing           ###   ########.fr       */
+/*   Updated: 2022/05/31 16:05:10 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 	size_t	str_len;
 	char	*result;
 
-	str_len = ft_strlen(str + start);
+	while (start-- && *str)
+		str++;
+	str_len = ft_strlen(str);
 	if (str_len > len)
 		str_len = len;
 	result = (char *) malloc(str_len + 1);
 	if (!result)
 		return (NULL);
 	result[str_len] = '\0';
-	ft_memcpy(result, str + start, str_len);
+	ft_memcpy(result, str, str_len);
 	return (result);
 }
