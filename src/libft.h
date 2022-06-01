@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:39:25 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/06/01 20:42:35 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/06/01 20:50:13 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,6 @@
 # else
 #  include <stddef.h>
 # endif
-
-// [PREPROCESSOR] BONUS PART START
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
-// Part 3 - Singly Linked List
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *node);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *node);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-// [PREPROCESSOR] BONUS PART END
 
 // Part 1 - Libc functions
 
@@ -316,4 +295,88 @@ extern "C"
 
 char *ft_strmapi(char const *str, char (*f)(unsigned int index, char c));
 
-#                                  endif
+// [PREPROCESSOR] BONUS PART START
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+// Part 3 - Singly Linked List
+
+#                                   ifdef __cplusplus
+
+extern "C"
+
+# endif
+
+t_list * ft_lstnew(void *content);
+
+#                                    ifdef __cplusplus
+
+extern "C"
+
+# endif
+
+void ft_lstadd_front(t_list **lst, t_list * node);
+
+#                                     ifdef __cplusplus
+
+extern "C"
+
+# endif
+
+int ft_lstsize(t_list * lst);
+
+#                                      ifdef __cplusplus
+
+extern "C"
+
+# endif
+
+t_list * ft_lstlast(t_list * lst);
+
+#                                       ifdef __cplusplus
+
+extern "C"
+
+# endif
+
+void ft_lstadd_back(t_list **lst, t_list * node);
+
+#                                        ifdef __cplusplus
+
+extern "C"
+
+# endif
+
+void ft_lstdelone(t_list * lst, void (*del)(void *));
+
+#                                         ifdef __cplusplus
+
+extern "C"
+
+# endif
+
+void ft_lstclear(t_list **lst, void (*del)(void *));
+
+#                                          ifdef __cplusplus
+
+extern "C"
+
+# endif
+
+void ft_lstiter(t_list * lst, void (*f)(void *));
+
+#                                           ifdef __cplusplus
+
+extern "C"
+
+# endif
+
+t_list * ft_lstmap(t_list * lst, void *(*f)(void *), void (*del)(void *));
+
+// [PREPROCESSOR] BONUS PART END
+
+#                                           endif
