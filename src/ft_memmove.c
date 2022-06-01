@@ -6,12 +6,15 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 13:34:22 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/31 16:06:30 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/06/01 20:58:25 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdint.h>
+#ifdef __cplusplus
+# include <cstdint>
+#else
+# include <stdint.h>
+#endif
 
 #include "libft.h"
 

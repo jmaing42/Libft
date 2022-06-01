@@ -6,11 +6,15 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/31 16:06:33 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/06/01 21:00:08 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifdef __cplusplus
+# include <cstdlib>
+#else
+# include <stdlib.h>
+#endif
 
 #include "libft.h"
 

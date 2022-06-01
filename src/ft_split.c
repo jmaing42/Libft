@@ -6,12 +6,16 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 05:37:46 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/05/31 16:06:30 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/06/01 20:59:14 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdbool.h>
+#ifdef __cplusplus
+# include <cstdlib>
+#else
+# include <stdlib.h>
+# include <stdbool.h>
+#endif
 
 static char	*ft_strndup(const char *src, size_t max_len)
 {
