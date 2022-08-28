@@ -6,7 +6,7 @@
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 00:55:16 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/08/28 15:25:45 by Juyeong Maing    ###   ########.fr       */
+/*   Updated: 2022/08/28 15:45:18 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_split_free(char	**null_terminated_strings)
 	char	**tmp;
 
 	tmp = null_terminated_strings;
-	while (*tmp)
+	while (tmp && *tmp)
 		free(*tmp++);
 	free(null_terminated_strings);
 }
