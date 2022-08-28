@@ -39,6 +39,8 @@ re:
 	$Q$(MAKE) fclean
 	$Q$(MAKE) all
 
+$(NAME): all
+
 all_done: $(SRCS_BASIC:.c=.o)
 	$Qrm -f bonus_done
 	$Q[ "$$(grep -c "^// \\[PREPROCESSOR\\] BONUS PART START\$$" libft.h)" = "1" ] && [ "$$(grep -c "^// \\[PREPROCESSOR\\] BONUS PART END\$$" libft.h)" = "1" ] && sed -e "1,12d;$$(grep -n "^// \\[PREPROCESSOR\\] BONUS PART START\$$" libft.h | cut -d : -f 1),$$(grep -n "^// \\[PREPROCESSOR\\] BONUS PART END\$$" libft.h | cut -d : -f 1)d" libft.h > $(HEADER_NAME) || (echo "FAILED TO PREPROCESS libft.h" && sed 1,12d libft.h > $(HEADER_NAME))
