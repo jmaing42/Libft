@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Juyeong Maing <jmaing@student.42seoul.kr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 16:56:41 by Juyeong Maing     #+#    #+#             */
-/*   Updated: 2022/06/01 20:58:07 by Juyeong Maing    ###   ########.fr       */
+/*   Created: 2022/04/06 17:03:16 by Juyeong Maing     #+#    #+#             */
+/*   Updated: 2022/09/10 02:33:41 by Juyeong Maing    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,22 @@
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *const	result = (t_list *) malloc(sizeof(t_list));
+	t_list	*result;
+	t_list	*new_node;
 
-	if (!result)
-		return (NULL);
-	result->next = NULL;
-	result->content = content;
+	result = NULL;
+	while (lst)
+	{
+		new_node = ft_lstnew(f(lst->content));
+		lst = lst->next;
+		if (!new_node)
+		{
+			ft_lstclear(&result, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&result, new_node);
+	}
 	return (result);
 }
